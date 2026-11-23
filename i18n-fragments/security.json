@@ -1,0 +1,64 @@
+{
+  "security.title": ["Kibertəhlükəsizlik və Kali Linux Akademiyası", "Cybersecurity & Kali Linux Academy", "Siber Güvenlik ve Kali Linux Akademisi", "Академия кибербезопасности и Kali Linux"],
+  "security.intro": [
+    "{n} mövzu: təhlükəsizlik əsasları, Linux, şəbəkə, müdafiə, veb təhlükəsizliyi, Kali Linux ilə tanışlıq və təhlükəsiz laboratoriya tapşırıqları.",
+    "{n} topics: security fundamentals, Linux, networking, defensive security, web security, an introduction to Kali Linux and safe lab exercises.",
+    "{n} konu: güvenlik temelleri, Linux, ağlar, savunma güvenliği, web güvenliği, Kali Linux'a giriş ve güvenli laboratuvar alıştırmaları.",
+    "{n} тем: основы безопасности, Linux, сети, защита систем, веб-безопасность, знакомство с Kali Linux и безопасные практические задания."
+  ],
+  "security.safety": [
+    "Bu bölmə maarifləndirici və müdafiə yönümlüdür. Burada hücum təlimatları, exploit kodu və ya real sistemlərə qarşı istifadə üçün materiallar yoxdur. Zəifliklər yalnız qarşısının alınması baxımından izah olunur.",
+    "This section is educational and defensive. It contains no attack instructions, exploit code or material for use against real systems. Vulnerabilities are explained only from the point of view of prevention.",
+    "Bu bölüm eğitim amaçlı ve savunma odaklıdır. Saldırı talimatları, exploit kodu veya gerçek sistemlere karşı kullanılacak materyal içermez. Zafiyetler yalnızca önleme açısından açıklanır.",
+    "Этот раздел носит образовательный и защитный характер. В нём нет инструкций по атакам, эксплойтов или материалов для использования против реальных систем. Уязвимости объясняются только с точки зрения защиты."
+  ],
+  "security.integration": [
+    "Kali Linux / WSL inteqrasiyası bu tətbiqdə mövcud deyil. Tətbiq heç bir əmri icra etmir: nümunələr yalnız oxumaq üçündür. Məşq etmək üçün öz kompüterinizdə təcrid olunmuş virtual maşın qurun (kali.org/docs).",
+    "Kali Linux / WSL integration is not available in this app. The app never executes commands: examples are for reading only. To practise, set up an isolated virtual machine on your own computer (kali.org/docs).",
+    "Kali Linux / WSL entegrasyonu bu uygulamada mevcut değildir. Uygulama hiçbir komut çalıştırmaz: örnekler yalnızca okumak içindir. Pratik için kendi bilgisayarınızda yalıtılmış bir sanal makine kurun (kali.org/docs).",
+    "Интеграция с Kali Linux / WSL в этом приложении недоступна. Приложение не выполняет команды: примеры предназначены только для чтения. Для практики создайте изолированную виртуальную машину на своём компьютере (kali.org/docs)."
+  ],
+  "security.legal": [
+    "Yalnız icazəli və qanuni istifadə üçün. Burada öyrəndiklərinizi yalnız sizə məxsus sistemlərdə, öz kompüterinizdəki təcrid olunmuş laboratoriyada və ya sahibinin yazılı icazəsi ilə tətbiq edin. İcazəsiz skan və ya giriş qanunla cəzalandırıla bilər.",
+    "For authorised and legal use only. Apply what you learn here only to systems you own, in an isolated lab on your own computer, or with the owner's written permission. Unauthorised scanning or access can be a criminal offence.",
+    "Yalnızca yetkili ve yasal kullanım içindir. Burada öğrendiklerinizi yalnızca size ait sistemlerde, kendi bilgisayarınızdaki yalıtılmış bir laboratuvarda veya sahibinin yazılı izniyle uygulayın. İzinsiz tarama veya erişim suç olabilir.",
+    "Только для разрешённого и законного использования. Применяйте полученные знания только к своим системам, в изолированной лаборатории на своём компьютере или с письменного разрешения владельца. Несанкционированное сканирование или доступ может быть уголовно наказуемым."
+  ],
+  "security.legalShort": ["Yalnız icazəli və qanuni istifadə", "Authorised and legal use only", "Yalnızca yetkili ve yasal kullanım", "Только разрешённое и законное использование"],
+  "security.progress": ["{done} / {total} tamamlanıb", "{done} / {total} completed", "{done} / {total} tamamlandı", "Завершено: {done} из {total}"],
+  "security.moduleLabel": ["Modul {letter}", "Module {letter}", "Modül {letter}", "Модуль {letter}"],
+  "security.topicCount": ["{n} mövzu", "{n} topics", "{n} konu", "Тем: {n}"],
+  "security.contents": ["Mövzunun bölmələri", "Topic sections", "Konu bölümleri", "Разделы темы"],
+  "security.section.intro": ["Giriş", "Introduction", "Giriş", "Введение"],
+  "security.section.concepts": ["Əsas anlayışlar", "Key concepts", "Temel kavramlar", "Ключевые понятия"],
+  "security.section.examples": ["Nümunələr", "Examples", "Örnekler", "Примеры"],
+  "security.section.mistakes": ["Tipik səhvlər", "Common mistakes", "Yaygın hatalar", "Типичные ошибки"],
+  "security.section.exercise": ["Tapşırıq", "Exercise", "Alıştırma", "Упражнение"],
+  "security.section.quiz": ["Bilik yoxlaması", "Knowledge check", "Bilgi kontrolü", "Проверка знаний"],
+  "security.section.refs": ["Rəsmi mənbələr", "Official references", "Resmi kaynaklar", "Официальные источники"],
+  "security.readOnly": [
+    "Yalnız oxumaq üçün — tətbiq bu əmrləri icra etmir.",
+    "For reading only — the app does not run these commands.",
+    "Yalnızca okumak için — uygulama bu komutları çalıştırmaz.",
+    "Только для чтения — приложение не выполняет эти команды."
+  ],
+  "security.smell": ["Təhlükəsiz olmayan nümunə (code smell)", "Insecure pattern (code smell)", "Güvensiz kalıp (code smell)", "Небезопасный шаблон (code smell)"],
+  "security.fixed": ["Təhlükəsiz versiya", "Secure version", "Güvenli sürüm", "Безопасный вариант"],
+  "security.material": ["Öyrənmək üçün material", "Material to study", "İncelenecek materyal", "Материал для изучения"],
+  "security.hint": ["İpucu {n}", "Hint {n}", "İpucu {n}", "Подсказка {n}"],
+  "security.showHint": ["İpucu göstər ({n}/{total})", "Show hint ({n}/{total})", "İpucu göster ({n}/{total})", "Показать подсказку ({n}/{total})"],
+  "security.showAnswer": ["Cavabı göstər", "Show answer", "Cevabı göster", "Показать ответ"],
+  "security.hideAnswer": ["Cavabı gizlət", "Hide answer", "Cevabı gizle", "Скрыть ответ"],
+  "security.answer": ["Nümunə cavab", "Sample answer", "Örnek cevap", "Пример ответа"],
+  "security.prev": ["Əvvəlki", "Previous", "Önceki", "Назад"],
+  "security.next": ["Növbəti", "Next", "Sonraki", "Далее"],
+  "security.back": ["Akademiyaya qayıt", "Back to the academy", "Akademiye dön", "Вернуться в академию"],
+  "security.notFound": ["Mövzu tapılmadı.", "Topic not found.", "Konu bulunamadı.", "Тема не найдена."],
+  "security.roadmapHint": [
+    "Haradan başlamaq lazım olduğunu bilmirsinizsə, \"Öyrənmə yol xəritəsi\" mövzusunu açın.",
+    "Not sure where to start? Open the \"Learning roadmap\" topic.",
+    "Nereden başlayacağınızdan emin değil misiniz? \"Öğrenme yol haritası\" konusunu açın.",
+    "Не знаете, с чего начать? Откройте тему «Дорожная карта обучения»."
+  ],
+  "security.openRoadmap": ["Yol xəritəsini aç", "Open the roadmap", "Yol haritasını aç", "Открыть дорожную карту"]
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+*.log
+
+# never commit secrets or local tool settings
+.env
+.env.*
+*.pem
+*.key
+.claude/settings.local.json

@@ -1,0 +1,85 @@
+/* Visual Learning. Colours come only from theme tokens, so both themes work. */
+.vis-tiles { list-style: none; margin: 0; padding: 0; }
+.vis-tiles > li { display: flex; }
+.vis-tiles .tile { flex: 1; }
+.vis-intro { margin: 6px 0 0; color: var(--text-2); max-width: 75ch; }
+.vis-h { font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 0 0 6px; font-weight: 600; }
+
+.vis-layout { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: start; }
+@media (max-width: 900px) { .vis-layout { grid-template-columns: minmax(0, 1fr); } }
+.vis-code { position: sticky; top: 12px; }
+@media (max-width: 900px) { .vis-code { position: static; } }
+
+.vis-codeblock .code-line[data-current] { background: var(--bg-2); box-shadow: inset 3px 0 0 var(--accent); }
+.vis-codeblock .code-line[data-current] .ln { color: var(--accent); font-weight: 700; }
+.vis-codeblock .code-line { transition: background-color var(--dur) ease; }
+
+.vis-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.vis-controls .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
+.vis-counter { font-variant-numeric: tabular-nums; color: var(--text-2); min-width: 7em; text-align: center; }
+.vis-progress { height: 4px; background: var(--bg-2); border-radius: 999px; overflow: hidden; margin: 10px 0 4px; }
+.vis-progress span { display: block; height: 100%; background: var(--accent); transition: width var(--dur) ease; }
+
+.vis-caption { border-left: 3px solid var(--accent); background: var(--bg-2); border-radius: 0 var(--radius) var(--radius) 0; padding: 8px 12px; margin: 10px 0 12px; min-height: 4.5em; }
+.vis-caption-meta { margin: 0 0 2px; }
+.vis-caption-text { margin: 0; line-height: 1.55; }
+
+.vis-figure { margin: 0; }
+.vis-stage { position: relative; }
+.vis-panels { display: flex; flex-wrap: wrap; gap: 28px 36px; align-items: flex-start; }
+.vis-panel { flex: 1 1 160px; min-width: 0; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); padding: 8px 10px 10px; }
+.vis-panel[data-layout="row"] { flex-basis: 100%; }
+.vis-panel-title { font-size: 0.85em; font-weight: 600; color: var(--text-2); margin: 0 0 6px; }
+.vis-hint { display: block; font-size: 0.75em; color: var(--muted); margin-bottom: 4px; }
+.vis-empty { margin: 0; font-size: 0.85em; color: var(--muted); font-style: italic; }
+.vis-items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.vis-panel[data-layout="row"] .vis-items { flex-direction: row; flex-wrap: wrap; }
+.vis-panel[data-layout="row"] .vis-item { flex-direction: column; align-items: center; min-width: 3.4em; text-align: center; }
+
+.vis-item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  padding: 6px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  font-family: var(--code-font);
+  font-size: 0.86em;
+  transition: border-color var(--dur) ease, background-color var(--dur) ease, opacity var(--dur) ease;
+}
+.vis-label { font-weight: 600; color: var(--text); }
+.vis-value { color: var(--text-2); overflow-wrap: anywhere; }
+.vis-tag { font-family: var(--ui-font); font-size: 0.78em; color: var(--accent); font-weight: 600; }
+.vis-panel[data-layout="column"] .vis-tag,
+.vis-panel[data-layout="stack"] .vis-tag { order: 3; margin-left: auto; }
+
+/* Tones: border + left bar + weight, never colour alone (the text alternative names the focus). */
+.vis-item[data-tone="accent"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.vis-item[data-tone="accent"] .vis-value { color: var(--text); font-weight: 600; }
+.vis-item[data-tone="success"] { border-color: var(--success); box-shadow: inset 3px 0 0 var(--success); }
+.vis-item[data-tone="warning"] { border-color: var(--warning); box-shadow: inset 3px 0 0 var(--warning); }
+.vis-item[data-tone="error"] { border-color: var(--error); box-shadow: inset 3px 0 0 var(--error); border-style: dashed; }
+.vis-item[data-tone="muted"] { opacity: 0.45; }
+
+.vis-arrows { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
+.vis-arrow { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+.vis-arrowhead { fill: var(--accent); }
+
+.vis-output { margin-top: 12px; }
+.vis-output pre { font-family: var(--code-font); font-size: var(--code-font-size); background: var(--bg); border: 1px dashed var(--border); border-radius: var(--radius); padding: 8px 12px; margin: 0; white-space: pre-wrap; min-height: 2.2em; }
+
+.vis-figure figcaption { margin-top: 10px; }
+.vis-figure summary { cursor: pointer; color: var(--text-2); }
+.vis-text { margin: 6px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.vis-keys { margin: 10px 0 0; }
+.vis-topic-nav { margin-top: 4px; }
+
+/* Reduced motion: --dur is already 0 then; this also guards against any inherited transitions. */
+:root[data-motion="reduced"] .vis *,
+:root[data-motion="reduced"] .vis-codeblock .code-line { transition: none !important; animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .vis *, .vis-codeblock .code-line { transition: none !important; animation: none !important; }
+}

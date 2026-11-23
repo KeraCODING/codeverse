@@ -1,0 +1,70 @@
+/* Design tokens — palette from the CODEVERSE specification (§31). */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #15171c;
+  --sidebar: #191c22;
+  --bg-2: #20242b;
+  --card: #232831;
+  --text: #e6e8ec;
+  --text-2: #a1a8b3;
+  --muted: #9198a4; /* spec #777F8C lifted slightly: 4.5:1 on cards for small text (WCAG AA) */
+  --border: #303640;
+  --accent: #8b9bb4;
+  --success: #739b83;
+  --warning: #c5a36a;
+  --error: #c47d7d;
+  --on-accent: #15171c;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f6f7;
+  --sidebar: #eceff2;
+  --bg-2: #ffffff;
+  --card: #ffffff;
+  --text: #252a32;
+  --text-2: #626b78;
+  --muted: #6b737e; /* spec #89919C lifted: 4.5:1 on white */
+  --border: #e1e5e9;
+  --accent: #687f9b;
+  --success: #477c60;
+  --warning: #98763e;
+  --error: #ae5c5c;
+  --on-accent: #ffffff;
+}
+
+/* Accent variants: muted tones only (no neon). */
+:root[data-theme="dark"][data-accent="sage"] { --accent: #8fae9a; }
+:root[data-theme="dark"][data-accent="sand"] { --accent: #c2ab84; }
+:root[data-theme="dark"][data-accent="rose"] { --accent: #c29a9a; }
+:root[data-theme="dark"][data-accent="violet"] { --accent: #a49bc0; }
+:root[data-theme="light"][data-accent="sage"] { --accent: #4f7a62; }
+:root[data-theme="light"][data-accent="sand"] { --accent: #85683a; }
+:root[data-theme="light"][data-accent="rose"] { --accent: #9a5858; }
+:root[data-theme="light"][data-accent="violet"] { --accent: #6a5f94; }
+
+:root {
+  --font-size: 14px;
+  --sidebar-width: 240px;
+  --sidebar-collapsed: 56px;
+  --radius: 6px;
+  --gap: 16px;
+  --pad: 20px;
+  --ui-font: "Inter", "Geist", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --code-font: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+  --code-font-size: 14px;
+  --dur: 120ms;
+}
+
+:root[data-density="compact"] {
+  --gap: 10px;
+  --pad: 14px;
+}
+
+:root[data-motion="reduced"] {
+  --dur: 0ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 0ms; }
+}

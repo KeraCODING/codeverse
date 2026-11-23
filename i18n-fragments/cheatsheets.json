@@ -1,0 +1,78 @@
+{
+  "cheatsheets.title": ["Qısa bələdçilər", "Cheat sheets", "Kısa rehberler", "Шпаргалки"],
+  "cheatsheets.intro": [
+    "{n} dil və alət üçün qısa sintaksis bələdçiləri. İnternet olmadan da işləyir.",
+    "Concise syntax references for {n} languages and tools. Works offline.",
+    "{n} dil ve araç için kısa sözdizimi rehberleri. İnternet olmadan da çalışır.",
+    "Краткие справочники по синтаксису для {n} языков и инструментов. Работают без интернета."
+  ],
+  "cheatsheets.searchLabel": [
+    "Bütün bələdçilərdə axtar",
+    "Search all cheat sheets",
+    "Tüm rehberlerde ara",
+    "Поиск по всем шпаргалкам"
+  ],
+  "cheatsheets.searchPlaceholder": [
+    "Kod və ya izah axtarın, məs. dövr, JOIN, flex…",
+    "Search code or explanations, e.g. loop, JOIN, flex…",
+    "Kod veya açıklama arayın, ör. döngü, JOIN, flex…",
+    "Ищите код или пояснения, например цикл, JOIN, flex…"
+  ],
+  "cheatsheets.results": ["{n} nəticə", "{n} results", "{n} sonuç", "Результатов: {n}"],
+  "cheatsheets.resultsCapped": [
+    "{n} nəticədən ilk {shown} göstərilir. Axtarışı dəqiqləşdirin.",
+    "Showing the first {shown} of {n} results. Refine your search.",
+    "{n} sonuçtan ilk {shown} gösteriliyor. Aramanızı daraltın.",
+    "Показаны первые {shown} из {n} результатов. Уточните запрос."
+  ],
+  "cheatsheets.sheetStats": [
+    "{sections} bölmə · {entries} nümunə",
+    "{sections} sections · {entries} entries",
+    "{sections} bölüm · {entries} örnek",
+    "Разделов: {sections} · примеров: {entries}"
+  ],
+  "cheatsheets.bookmarkedCount": [
+    "{n} seçilmiş bölmə",
+    "{n} bookmarked sections",
+    "{n} işaretli bölüm",
+    "Разделов в закладках: {n}"
+  ],
+  "cheatsheets.toc": ["Bölmələr", "Sections", "Bölümler", "Разделы"],
+  "cheatsheets.filterSheet": [
+    "{name} bələdçisində süz",
+    "Filter the {name} cheat sheet",
+    "{name} rehberinde filtrele",
+    "Фильтр по шпаргалке {name}"
+  ],
+  "cheatsheets.bookmarkedOnly": ["Yalnız seçilmişlər", "Bookmarked only", "Yalnızca işaretliler", "Только закладки"],
+  "cheatsheets.bookmarkAdd": [
+    "“{name}” bölməsini seçilmişlərə əlavə et",
+    "Bookmark the “{name}” section",
+    "“{name}” bölümünü işaretle",
+    "Добавить раздел «{name}» в закладки"
+  ],
+  "cheatsheets.bookmarkRemove": [
+    "“{name}” bölməsini seçilmişlərdən çıxar",
+    "Remove the “{name}” bookmark",
+    "“{name}” bölümünün işaretini kaldır",
+    "Убрать раздел «{name}» из закладок"
+  ],
+  "cheatsheets.noBookmarks": [
+    "Bu bələdçidə hələ seçilmiş bölmə yoxdur. Bölmə başlığının yanındakı ☆ düyməsini basın.",
+    "No bookmarked sections in this sheet yet. Press ☆ next to a section title.",
+    "Bu rehberde henüz işaretli bölüm yok. Bölüm başlığının yanındaki ☆ düğmesine basın.",
+    "В этой шпаргалке пока нет закладок. Нажмите ☆ рядом с названием раздела."
+  ],
+  "cheatsheets.fallbackNote": [
+    "Bəzi izahlar hələ bu dilə tərcümə olunmayıb; onlar azərbaycan və ya ingilis dilində göstərilir.",
+    "Some explanations are not translated into this language yet; they are shown in Azerbaijani or English.",
+    "Bazı açıklamalar henüz bu dile çevrilmedi; Azerbaycanca veya İngilizce gösteriliyor.",
+    "Некоторые пояснения ещё не переведены на этот язык; они показаны на азербайджанском или английском."
+  ],
+  "cheatsheets.offlineNote": [
+    "Nümunələr qısaldılıb. Ətraflı məlumat üçün hər bələdçidəki rəsmi sənədlərə baxın.",
+    "Snippets are shortened. See the official documentation linked in each sheet for details.",
+    "Örnekler kısaltılmıştır. Ayrıntılar için her rehberdeki resmi belgelere bakın.",
+    "Примеры сокращены. Подробности — в официальной документации, ссылка есть в каждой шпаргалке."
+  ]
+}

@@ -1,0 +1,10 @@
+/* Cheat sheets: minimal additions on top of base.css. */
+.cs-section { margin-top: 14px; }
+.cs-section h2 { margin: 0; }
+.cs-section h2:focus { outline: none; }
+.cs-section h2:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cs-entry { margin-top: 12px; }
+.cs-results .cs-entry { margin-top: 10px; }
+.cs-note { margin: 4px 0 0; }
+.cs-mark { font-size: 1.25em; line-height: 1; }
+.cs-mark[aria-pressed="true"] { color: var(--accent); }

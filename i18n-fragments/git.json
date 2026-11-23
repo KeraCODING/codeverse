@@ -1,0 +1,62 @@
+{
+  "git.title": ["Git və GitHub", "Git & GitHub", "Git ve GitHub", "Git и GitHub"],
+  "git.intro": [
+    "Git, GitHub və developer ekosistemi haqqında {n} mövzu: izah, əmrlər, tipik səhvlər, məşq və bilik yoxlaması.",
+    "{n} topics on Git, GitHub and the developer ecosystem: explanations, commands, common mistakes, practice and knowledge checks.",
+    "Git, GitHub ve geliştirici ekosistemi üzerine {n} konu: açıklamalar, komutlar, yaygın hatalar, alıştırma ve bilgi kontrolü.",
+    "{n} тем о Git, GitHub и экосистеме разработчика: объяснения, команды, типичные ошибки, практика и проверка знаний."
+  ],
+  "git.progress": [
+    "Tamamlanıb: {done} / {total} mövzu",
+    "Completed: {done} of {total} topics",
+    "Tamamlanan: {done} / {total} konu",
+    "Завершено: {done} из {total} тем"
+  ],
+  "git.group.git": ["Git əsasları", "Git fundamentals", "Git temelleri", "Основы Git"],
+  "git.group.github": ["GitHub", "GitHub", "GitHub", "GitHub"],
+  "git.group.platforms": ["Digər platformalar", "Other platforms", "Diğer platformlar", "Другие платформы"],
+  "git.groupDesc.git": [
+    "Versiya nəzarəti: commit, branch, merge, uzaq repozitoriyalarla iş və komanda iş axınları.",
+    "Version control: commits, branches, merging, working with remotes and team workflows.",
+    "Sürüm kontrolü: commit, branch, merge, uzak depolarla çalışma ve ekip iş akışları.",
+    "Контроль версий: коммиты, ветки, слияние, работа с удалёнными репозиториями и командные процессы."
+  ],
+  "git.groupDesc.github": [
+    "Layihələri saxlamaq, birgə işləmək, avtomatlaşdırmaq və dərc etmək üçün GitHub.",
+    "GitHub for hosting projects, collaborating, automating and publishing.",
+    "Projeleri barındırmak, birlikte çalışmak, otomatikleştirmek ve yayımlamak için GitHub.",
+    "GitHub для хранения проектов, совместной работы, автоматизации и публикации."
+  ],
+  "git.groupDesc.platforms": [
+    "Developerlərin hər gün istifadə etdiyi digər kod, paket və bilik platformaları.",
+    "Other code, package and knowledge platforms developers use every day.",
+    "Geliştiricilerin her gün kullandığı diğer kod, paket ve bilgi platformları.",
+    "Другие платформы для кода, пакетов и знаний, которыми разработчики пользуются каждый день."
+  ],
+  "git.contents": ["Mövzunun bölmələri", "Topic sections", "Konu bölümleri", "Разделы темы"],
+  "git.topicOf": ["Mövzu {i} / {n}", "Topic {i} of {n}", "Konu {i} / {n}", "Тема {i} из {n}"],
+  "git.section.what": ["Nədir və nə üçün vacibdir?", "What it is and why it matters", "Nedir ve neden önemlidir?", "Что это и зачем это нужно"],
+  "git.section.how": ["Necə işləyir?", "How it works", "Nasıl çalışır?", "Как это работает"],
+  "git.section.examples": ["Əmr və fayl nümunələri", "Example commands and files", "Örnek komutlar ve dosyalar", "Примеры команд и файлов"],
+  "git.section.mistakes": ["Tipik səhvlər", "Common mistakes", "Yaygın hatalar", "Типичные ошибки"],
+  "git.section.exercise": ["Praktik tapşırıq", "Practical exercise", "Uygulama alıştırması", "Практическое задание"],
+  "git.section.quiz": ["Bilik yoxlaması", "Knowledge check", "Bilgi kontrolü", "Проверка знаний"],
+  "git.section.docs": ["Rəsmi sənədlər", "Official documentation", "Resmî belgeler", "Официальная документация"],
+  "git.example": ["Nümunə", "Example", "Örnek", "Пример"],
+  "git.exerciseNote": [
+    "Tapşırığı öz terminalınızda və ya brauzerinizdə yerinə yetirin; tətbiq heç bir əmri sizin yerinizə icra etmir.",
+    "Do the exercise in your own terminal or browser; the app does not run any commands for you.",
+    "Alıştırmayı kendi terminalinizde veya tarayıcınızda yapın; uygulama sizin yerinize hiçbir komut çalıştırmaz.",
+    "Выполните задание в своём терминале или браузере; приложение не запускает команды за вас."
+  ],
+  "git.tryViz": ["Git Visualizer-də sınayın", "Try it in the Git Visualizer", "Git Visualizer'da deneyin", "Попробуйте в Git Visualizer"],
+  "git.vizNote": [
+    "Commit və branch-ların necə dəyişdiyini interaktiv qrafikdə görün.",
+    "See how commits and branches change on an interactive graph.",
+    "Commit ve branch'lerin nasıl değiştiğini etkileşimli bir grafikte görün.",
+    "Посмотрите на интерактивном графе, как меняются коммиты и ветки."
+  ],
+  "git.pager": ["Mövzular arasında keçid", "Topic navigation", "Konular arası gezinme", "Навигация по темам"],
+  "git.prev": ["Əvvəlki", "Previous", "Önceki", "Предыдущая"],
+  "git.next": ["Növbəti", "Next", "Sonraki", "Следующая"]
+}

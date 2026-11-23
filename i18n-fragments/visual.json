@@ -1,0 +1,40 @@
+{
+  "visual.intro": [
+    "Çətin proqramlaşdırma anlayışları sadə, addım-addım sxemlərdə: yaddaş, rekursiya, HTTP, hadisə dövrü və s.",
+    "Hard programming concepts as simple step-by-step diagrams: memory, recursion, HTTP, the event loop and more.",
+    "Zor programlama kavramları basit, adım adım şemalarla: bellek, özyineleme, HTTP, olay döngüsü ve daha fazlası.",
+    "Сложные понятия программирования в простых пошаговых схемах: память, рекурсия, HTTP, цикл событий и другое."
+  ],
+  "visual.notFound": [
+    "Belə mövzu tapılmadı. Aşağıdakı siyahıdan birini seçin.",
+    "This topic does not exist. Choose one from the list below.",
+    "Böyle bir konu bulunamadı. Aşağıdaki listeden birini seçin.",
+    "Такая тема не найдена. Выберите тему из списка ниже."
+  ],
+  "visual.topics": ["Mövzular", "Topics", "Konular", "Темы"],
+  "visual.breadcrumbs": ["Naviqasiya yolu", "Breadcrumbs", "Gezinti yolu", "Навигационная цепочка"],
+  "visual.topicNav": ["Əvvəlki və növbəti mövzu", "Previous and next topic", "Önceki ve sonraki konu", "Предыдущая и следующая тема"],
+  "visual.stepsCount": ["{n} addım", "{n} steps", "{n} adım", "Шагов: {n}"],
+  "visual.prev": ["Əvvəlki", "Previous", "Önceki", "Назад"],
+  "visual.next": ["Növbəti", "Next", "Sonraki", "Далее"],
+  "visual.reset": ["Əvvələ qayıt", "Reset", "Başa dön", "Сначала"],
+  "visual.stepOf": ["Addım {n} / {total}", "Step {n} of {total}", "Adım {n} / {total}", "Шаг {n} из {total}"],
+  "visual.line": ["Sətir {n}", "Line {n}", "Satır {n}", "Строка {n}"],
+  "visual.keys": [
+    "İpucu: addımlar arasında ← və → düymələri ilə də keçə bilərsiniz.",
+    "Tip: you can also move between steps with the ← and → keys.",
+    "İpucu: adımlar arasında ← ve → tuşlarıyla da geçebilirsiniz.",
+    "Подсказка: переключать шаги можно и клавишами ← и →."
+  ],
+  "visual.controls": ["Addımların idarəsi", "Step controls", "Adım kontrolleri", "Управление шагами"],
+  "visual.diagram": ["Sxem", "Diagram", "Şema", "Схема"],
+  "visual.textAlt": ["Sxemin mətn təsviri", "Diagram as text", "Şemanın metin açıklaması", "Текстовое описание схемы"],
+  "visual.output": ["Çıxış", "Output", "Çıktı", "Вывод"],
+  "visual.empty": ["boş", "empty", "boş", "пусто"],
+  "visual.code": ["Kod", "Code", "Kod", "Код"],
+  "visual.stackTop": ["stekin üstü", "top of the stack", "yığının üstü", "вершина стека"],
+  "visual.links": ["Əlaqələr", "Links", "Bağlantılar", "Связи"],
+  "visual.focus": ["diqqət mərkəzində", "in focus", "odakta", "в фокусе"],
+  "visual.prevTopic": ["Əvvəlki mövzu", "Previous topic", "Önceki konu", "Предыдущая тема"],
+  "visual.nextTopic": ["Növbəti mövzu", "Next topic", "Sonraki konu", "Следующая тема"]
+}

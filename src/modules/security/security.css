@@ -1,0 +1,11 @@
+/* Cybersecurity Academy — small additions on top of base.css */
+.sec-module { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.sec-module h2 { margin: 0; font-size: 1.15em; display: flex; align-items: center; gap: 8px; }
+.sec-module .tile .badge { align-self: flex-start; margin-top: 4px; }
+.sec-note { justify-content: flex-start; }
+.sec-concepts { display: grid; gap: 10px; margin: 0; }
+.sec-concepts dt { font-weight: 600; }
+.sec-concepts dd { margin: 2px 0 0; color: var(--text-2); }
+.sec-exercise { display: flex; flex-direction: column; gap: 8px; }
+.sec-answer { border-left: 3px solid var(--success); padding: 4px 12px; background: var(--bg-2); border-radius: var(--radius); }
+.sec-answer h3 { margin: 4px 0; font-size: 1em; }
