@@ -227,6 +227,90 @@ export const CHALLENGES: PracticeTask[] = [
     solution: 'def is_palindrome(text):\n    s = text.replace(" ", "").lower()\n    return s == s[::-1]\n\nwords = ["Kayak", "Never odd or even", "Python"]\nfor w in words:\n    print(is_palindrome(w))',
     lessons: ["python-functions", "python-loops"],
   },
+  {
+    id: "js-even-squares", lang: "javascript", level: 2,
+    title: { az: "Cüt ədədlərin kvadratları", en: "Squares of even numbers" },
+    task: { az: "`nums` massivindən yalnız cüt ədədləri götürün, onların kvadratlarından yeni massiv düzəldib çap edin.", en: "Take only the even numbers from `nums`, build a new array of their squares and print it." },
+    starter: "const nums = [1, 2, 3, 4, 5, 6];\n",
+    expected: "[ 4, 16, 36 ]",
+    hints: [
+      { az: "`filter((n) => n % 2 === 0)` cüt ədədləri saxlayır.", en: "`filter((n) => n % 2 === 0)` keeps the even numbers." },
+      { az: "Sonra `map((n) => n * n)` və `console.log(...)`.", en: "Then `map((n) => n * n)` and `console.log(...)`." },
+    ],
+    solution: "const nums = [1, 2, 3, 4, 5, 6];\nconst squares = nums.filter((n) => n % 2 === 0).map((n) => n * n);\nconsole.log(squares);",
+    lessons: ["javascript-arrays", "javascript-functions"],
+  },
+  {
+    id: "js-average-object", lang: "javascript", level: 3,
+    title: { az: "Obyektdəki balların ortası", en: "Average of the scores in an object" },
+    task: { az: "`scores` obyektindəki bütün balların ortasını tam ədədə yuvarlaqlaşdırıb `Average: 85` formasında çap edin.", en: "Print the average of all scores in `scores`, rounded to a whole number, as `Average: 85`." },
+    starter: "const scores = { math: 92, physics: 78, history: 85 };\n",
+    expected: "Average: 85",
+    hints: [
+      { az: "`Object.values(scores)` yalnız dəyərlərin massivini verir.", en: "`Object.values(scores)` gives an array of just the values." },
+      { az: "Cəmi `reduce` ilə tapın, saya bölün, `Math.round` edin.", en: "Add them with `reduce`, divide by the count, then `Math.round`." },
+    ],
+    solution: "const scores = { math: 92, physics: 78, history: 85 };\nconst values = Object.values(scores);\nconst avg = values.reduce((a, b) => a + b, 0) / values.length;\nconsole.log(`Average: ${Math.round(avg)}`);",
+    lessons: ["javascript-objects", "javascript-arrays"],
+  },
+  {
+    id: "py-title-case", lang: "python", level: 1,
+    title: { az: "Hər sözün baş hərfi", en: "Capitalise every word" },
+    task: { az: "`text` cümləsindəki hər sözün birinci hərfini böyük edib çap edin.", en: "Print `text` with the first letter of every word in capitals." },
+    starter: 'text = "hello world from baku"\n',
+    expected: "Hello World From Baku",
+    hints: [
+      { az: "Mətnlərin hazır metodu var: `title()`.", en: "Strings have a ready-made method: `title()`." },
+      { az: "`print(text.title())`", en: "`print(text.title())`" },
+    ],
+    solution: 'text = "hello world from baku"\nprint(text.title())',
+    lessons: ["python-strings"],
+  },
+  {
+    id: "py-fizzbuzz", lang: "python", level: 2,
+    title: { az: "FizzBuzz", en: "FizzBuzz" },
+    task: {
+      az: "1-dən 15-ə qədər ədədləri çap edin; 3-ə bölünənlərin yerinə `Fizz`, 5-ə bölünənlərin yerinə `Buzz`, hər ikisinə bölünənlərin yerinə `FizzBuzz` yazın.",
+      en: "Print the numbers 1 to 15; print `Fizz` instead of multiples of 3, `Buzz` instead of multiples of 5 and `FizzBuzz` for multiples of both.",
+    },
+    starter: "for n in range(1, 16):\n    pass\n",
+    expected: "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+    hints: [
+      { az: "Əvvəlcə 15-ə bölünməni yoxlayın (`n % 15 == 0`), sonra 3 və 5.", en: "Check divisibility by 15 first (`n % 15 == 0`), then 3 and 5." },
+      { az: "`if` / `elif` / `elif` / `else` istifadə edin.", en: "Use `if` / `elif` / `elif` / `else`." },
+    ],
+    solution: 'for n in range(1, 16):\n    if n % 15 == 0:\n        print("FizzBuzz")\n    elif n % 3 == 0:\n        print("Fizz")\n    elif n % 5 == 0:\n        print("Buzz")\n    else:\n        print(n)',
+    lessons: ["python-loops", "python-conditions"],
+  },
+  {
+    id: "sql-product-count", lang: "sql", level: 2,
+    title: { az: "Hansı məhsul neçə dəfə alınıb?", en: "How often was each product bought?" },
+    task: { az: "Hər məhsulun neçə dəfə sifariş edildiyini `times` adlı sütunla göstərin; ən çox alınan birinci, bərabər olduqda ada görə.", en: "Show how many times each product was ordered as a column named `times`; most frequent first, then by name." },
+    starter: "SELECT product\nFROM orders;\n",
+    expected: "product  | times\nNotebook | 2\nBackpack | 1\nPen      | 1",
+    hints: [
+      { az: "`COUNT(*) AS times` və `GROUP BY product`.", en: "`COUNT(*) AS times` and `GROUP BY product`." },
+      { az: "`ORDER BY times DESC, product`", en: "`ORDER BY times DESC, product`" },
+    ],
+    solution: "SELECT product, COUNT(*) AS times\nFROM orders\nGROUP BY product\nORDER BY times DESC, product;",
+    lessons: ["sql-select", "sql-filter-sort"],
+  },
+  {
+    id: "ts-cart-total", lang: "typescript", level: 2,
+    title: { az: "Tipli səbət", en: "A typed cart" },
+    task: {
+      az: "`Item` interfeysini (`price: number`, `qty: number`) və `total(items: Item[]): number` funksiyasını yazın. `Total: 19` çap edin.",
+      en: "Write an `Item` interface (`price: number`, `qty: number`) and a `total(items: Item[]): number` function. Print `Total: 19`.",
+    },
+    starter: "const cart = [\n  { price: 5, qty: 2 },\n  { price: 3, qty: 3 },\n];\n",
+    expected: "Total: 19",
+    hints: [
+      { az: "`interface Item { price: number; qty: number }`", en: "`interface Item { price: number; qty: number }`" },
+      { az: "`items.reduce((sum, i) => sum + i.price * i.qty, 0)`", en: "`items.reduce((sum, i) => sum + i.price * i.qty, 0)`" },
+    ],
+    solution: "interface Item {\n  price: number;\n  qty: number;\n}\n\nfunction total(items: Item[]): number {\n  return items.reduce((sum, i) => sum + i.price * i.qty, 0);\n}\n\nconst cart: Item[] = [\n  { price: 5, qty: 2 },\n  { price: 3, qty: 3 },\n];\nconsole.log(`Total: ${total(cart)}`);",
+    lessons: ["typescript-basics"],
+  },
 ];
 
 export const DEBUG_TASKS: PracticeTask[] = [

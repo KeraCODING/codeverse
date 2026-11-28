@@ -2,6 +2,18 @@
 
 Last updated: 2026-11-28 · Version 0.2.0 (+ unreleased changes below)
 
+## Unreleased — All lessons, search everything, simple explanations, more content (2026-11-28)
+
+| Item | Evidence |
+|---|---|
+| **All lessons** page: full list grouped by language with progress, search, language / level / status filters; in the sidebar and on the dashboard | browser + desktop window |
+| Universal Search and the Ctrl+K palette now cover cheat sheets, Git, security, visual topics, tasks, project guides and the text inside lessons | tests (`rebase`, `palindrom`, `sql injection`, a phrase found only inside a lesson) |
+| Every lesson opens with an **"In simple words"** box (everyday analogy, az + en) | test: all lessons have one |
+| 4 new lessons: `javascript-loops`, `python-strings`, `sql-filter-sort`, `sql-joins` → **17 lessons**, all auto-checked | tests |
+| 6 new challenges (JS ×2, Python ×2, SQL, TypeScript) → 21 challenges | every solution executed in tests |
+| SQL lesson examples are now executed in tests as well (all languages covered) | tests |
+| `npm test`: **298 passed** | |
+
 ## Unreleased — Modern interface, TypeScript, web preview, faster navigation (2026-11-28)
 
 ### Interface

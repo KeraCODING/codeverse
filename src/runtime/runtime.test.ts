@@ -190,12 +190,12 @@ describe("Python sandbox harness", () => {
 });
 
 describe("lesson examples print what the lesson says", () => {
-  it("every JavaScript, TypeScript and Python example produces its documented output", async () => {
+  it("every JavaScript, TypeScript, Python and SQL example produces its documented output", async () => {
     let checked = 0;
     for (const meta of LESSON_INDEX) {
       const l = (await loadLesson(meta.id))!;
       for (const ex of l.examples) {
-        if (ex.output === undefined || !["javascript", "typescript", "python"].includes(ex.lang)) continue;
+        if (ex.output === undefined || !["javascript", "typescript", "python", "sql"].includes(ex.lang)) continue;
         checked++;
         expect(normalizeOutput(run({ lang: ex.lang as PracticeTask["lang"] }, ex.code)), `${l.id}: ${ex.title.en}`).toBe(normalizeOutput(ex.output));
       }

@@ -16,6 +16,10 @@ export const LESSON_INDEX: LessonMeta[] = [
   { id: "javascript-objects", language: "javascript", order: 5, level: "beginner", title: { az: "Obyektlər (object)", en: "Objects" } },
   { id: "python-dictionaries", language: "python", order: 6, level: "beginner", title: { az: "Lüğətlər (dict)", en: "Dictionaries (dict)" } },
   { id: "typescript-basics", language: "typescript", order: 1, level: "beginner", title: { az: "TypeScript əsasları: tiplər və interfeyslər", en: "TypeScript basics: types and interfaces" } },
+  { id: "javascript-loops", language: "javascript", order: 6, level: "beginner", title: { az: "Dövrlər: for, for...of və while", en: "Loops: for, for...of and while" } },
+  { id: "python-strings", language: "python", order: 7, level: "beginner", title: { az: "Mətnlər (str) və onların metodları", en: "Strings (str) and their methods" } },
+  { id: "sql-filter-sort", language: "sql", order: 2, level: "beginner", title: { az: "Süzmə və çeşidləmə: WHERE, ORDER BY, LIMIT", en: "Filtering and sorting: WHERE, ORDER BY, LIMIT" } },
+  { id: "sql-joins", language: "sql", order: 3, level: "intermediate", title: { az: "Cədvəlləri birləşdirmək: JOIN", en: "Combining tables: JOIN" } },
 ];
 
 const loaders = import.meta.glob<Lesson>("./lessons/*.ts", { import: "default" });

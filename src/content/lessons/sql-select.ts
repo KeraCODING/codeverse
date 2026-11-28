@@ -150,7 +150,7 @@ const lesson: Lesson = {
     { en: "row", local: { az: "sətir", tr: "satır", ru: "строка" } },
     { en: "alias", local: { az: "ləqəb (alias)", tr: "takma ad", ru: "псевдоним" } },
   ],
-  related: ["python-lists", "javascript-arrays"],
+  related: ["python-lists", "javascript-arrays", "sql-filter-sort", "sql-joins"],
   sources: [
     { title: "SQLite — SELECT", url: "https://www.sqlite.org/lang_select.html" },
     { title: "PostgreSQL — Queries (SELECT)", url: "https://www.postgresql.org/docs/current/queries.html" },
