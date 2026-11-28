@@ -8,6 +8,10 @@ const lesson: Lesson = {
   order: 1,
   level: "absolute",
   title: { az: "SELECT: məlumatı oxumaq", en: "SELECT: reading data" },
+  simple: {
+    az: "Verilənlər bazası nəhəng Excel cədvəlinə bənzəyir. `SELECT` isə ona verdiyiniz sualdır: \"mənə Bakıda yaşayan istifadəçilərin adlarını göstər\". `SELECT name` hansı sütunları istədiyinizi, `FROM users` hansı cədvəldən baxılacağını, `WHERE city = 'Baku'` isə hansı sətirlərin seçiləcəyini deyir.",
+    en: "A database is like a huge spreadsheet, and `SELECT` is a question you ask it: \"show me the names of users who live in Baku\". `SELECT name` says which columns you want, `FROM users` which table to look in, and `WHERE city = 'Baku'` which rows to keep.",
+  },
   intro: {
     what: {
       az: "`SELECT` cədvəldən məlumat oxuyan SQL əmridir. Hansı sütunların, hansı cədvəldən, hansı şərtlə və hansı sıra ilə gətiriləcəyini deyirsiniz; verilənlər bazası isə bunu necə edəcəyinə özü qərar verir. Nümunələrdə `users` cədvəli istifadə olunur: `id`, `name`, `city`, `age` sütunları və 4 sətir (Aysel/Baku/24, Murad/Ganja/31, Leyla/Baku/19, Elvin/Shaki/yaşı məlum deyil).",
@@ -146,7 +150,7 @@ const lesson: Lesson = {
     { en: "row", local: { az: "sətir", tr: "satır", ru: "строка" } },
     { en: "alias", local: { az: "ləqəb (alias)", tr: "takma ad", ru: "псевдоним" } },
   ],
-  related: ["python-lists", "javascript-arrays"],
+  related: ["python-lists", "javascript-arrays", "sql-filter-sort", "sql-joins"],
   sources: [
     { title: "SQLite — SELECT", url: "https://www.sqlite.org/lang_select.html" },
     { title: "PostgreSQL — Queries (SELECT)", url: "https://www.postgresql.org/docs/current/queries.html" },

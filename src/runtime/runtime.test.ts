@@ -8,6 +8,9 @@ import { checkOutput } from "./index";
 import { SAMPLE_DB_SQL } from "./sampleDb";
 import { CHALLENGES, DEBUG_TASKS, type PracticeTask } from "../content/practice";
 import { LESSON_INDEX, loadLesson } from "../content";
+import { loadPyodide } from "pyodide";
+import { installHarness, type PyFailure } from "./pyHarness";
+import { stripTypes } from "./tsRunner";
 
 describe("Node-style value formatting", () => {
   it("formats primitives, arrays and objects like console.log", () => {
@@ -74,7 +77,32 @@ function runSqlInNode(code: string): string {
   }
 }
 
-const run = (t: Pick<PracticeTask, "lang">, code: string) => (t.lang === "javascript" ? runJsInNode(code) : runSqlInNode(code));
+// Python: the real interpreter (Pyodide under Node) with exactly the harness the app's worker uses.
+let pyRun: (src: string) => PyFailure | null;
+let pyOut: string[] = [];
+beforeAll(async () => {
+  const py = await loadPyodide();
+  const dec = new TextDecoder();
+  py.setStdout({ write: (b: Uint8Array) => (pyOut.push(dec.decode(b, { stream: true })), b.length) });
+  py.setStderr({ write: (b: Uint8Array) => (pyOut.push(dec.decode(b, { stream: true })), b.length) });
+  pyRun = installHarness(py);
+}, 60_000);
+
+function runPyInNode(code: string): string {
+  pyOut = [];
+  const fail = pyRun(code);
+  if (fail) throw new Error(`${fail.name}: ${fail.message}`);
+  return pyOut.join("");
+}
+
+const run = (t: Pick<PracticeTask, "lang">, code: string) =>
+  t.lang === "javascript"
+    ? runJsInNode(code)
+    : t.lang === "typescript"
+      ? runJsInNode(stripTypes(code))
+      : t.lang === "python"
+        ? runPyInNode(code)
+        : runSqlInNode(code);
 const safeRun = (t: Pick<PracticeTask, "lang">, code: string) => {
   try {
     return run(t, code);
@@ -117,10 +145,70 @@ describe("lesson exercises with automatic checks", () => {
       const ex = l.exercise;
       if (!ex.check) continue;
       checked++;
-      const task = { lang: ex.lang as "javascript" | "sql" };
+      const task = { lang: ex.lang as PracticeTask["lang"] };
       expect(normalizeOutput(run(task, ex.solution)), l.id).toBe(normalizeOutput(ex.check.expected));
       expect(normalizeOutput(safeRun(task, ex.check.starter)), l.id).not.toBe(normalizeOutput(ex.check.expected));
     }
-    expect(checked).toBe(5); // every JavaScript and SQL lesson
+    expect(checked).toBe(LESSON_INDEX.length); // every lesson (JavaScript, Python, SQL) is checked automatically
+  });
+});
+
+describe("Python sandbox harness", () => {
+  it("prints like CPython and starts every run with fresh variables", () => {
+    expect(runPyInNode('x = [1, 2]\nprint(x, {"a": 1}, 3 / 2, "ə")')).toBe("[1, 2] {'a': 1} 1.5 ə\n");
+    expect(() => runPyInNode("print(x)")).toThrow(/NameError/);
+  });
+
+  it("reports the learner's line and a traceback without internal frames", () => {
+    pyOut = [];
+    const f = pyRun("a = 1\nb = 0\nprint(a / b)\n")!;
+    expect(f.name).toBe("ZeroDivisionError");
+    expect(f.line).toBe(3);
+    expect(f.traceback).toContain('File "main.py", line 3');
+    expect(f.traceback).toContain("print(a / b)");
+    expect(f.traceback).not.toContain("_pyodide");
+  });
+
+  it("reports syntax and indentation errors with their line", () => {
+    const s = pyRun("x = 1\nif x > 0\n    print(x)\n")!;
+    expect(s.name).toBe("SyntaxError");
+    expect(s.line).toBe(2);
+    const i = pyRun("def f():\nprint(1)\n")!;
+    expect(i.name).toBe("IndentationError");
+    expect(i.line).toBe(2);
+  });
+
+  it("explains that input() is unavailable instead of hanging", () => {
+    const f = pyRun('name = input("Name? ")\n')!;
+    expect(f.name).toBe("InputNotSupported");
+    expect(f.line).toBe(1);
+  });
+
+  it("treats sys.exit() / exit(0) as a normal end", () => {
+    expect(pyRun('print("bye")\nimport sys\nsys.exit()\nprint("never")')).toBeNull();
+  });
+});
+
+describe("lesson examples print what the lesson says", () => {
+  it("every JavaScript, TypeScript, Python and SQL example produces its documented output", async () => {
+    let checked = 0;
+    for (const meta of LESSON_INDEX) {
+      const l = (await loadLesson(meta.id))!;
+      for (const ex of l.examples) {
+        if (ex.output === undefined || !["javascript", "typescript", "python", "sql"].includes(ex.lang)) continue;
+        checked++;
+        expect(normalizeOutput(run({ lang: ex.lang as PracticeTask["lang"] }, ex.code)), `${l.id}: ${ex.title.en}`).toBe(normalizeOutput(ex.output));
+      }
+    }
+    expect(checked).toBeGreaterThan(20);
+  });
+});
+
+describe("TypeScript runner", () => {
+  it("removes types but keeps every line in place", () => {
+    const src = "interface A {\n  x: number;\n}\nconst a: A = { x: 1 };\nlet s: string = \"hi\";\nconsole.log(a.x, s);";
+    const js = stripTypes(src);
+    expect(js.split("\n").length).toBe(src.split("\n").length);
+    expect(runJsInNode(js)).toBe("1 hi");
   });
 });

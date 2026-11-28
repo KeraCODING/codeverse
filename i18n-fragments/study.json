@@ -1,0 +1,50 @@
+{
+  "dashboard.goal.today": [
+    "Bu gün {n} / {goal} dəq",
+    "{n} / {goal} min today",
+    "Bugün {n} / {goal} dk",
+    "Сегодня {n} / {goal} мин"
+  ],
+  "dashboard.goal.reached": [
+    "Bugünkü məqsədə çatdınız",
+    "Today's goal reached",
+    "Bugünkü hedefe ulaştınız",
+    "Цель на сегодня достигнута"
+  ],
+  "dashboard.goal.left": [
+    "Məqsədə {n} dəq qalıb",
+    "{n} min to go",
+    "Hedefe {n} dk kaldı",
+    "До цели осталось {n} мин"
+  ],
+  "dashboard.goal.streak": [
+    "ardıcıl {n} gün",
+    "{n}-day streak",
+    "art arda {n} gün",
+    "серия: {n} дн."
+  ],
+  "dashboard.goal.week": [
+    "Son 7 gün",
+    "Last 7 days",
+    "Son 7 gün",
+    "Последние 7 дней"
+  ],
+  "dashboard.goal.note": [
+    "Vaxt CODEVERSE açıq olduqda və siz aktiv olduqda sayılır; 2 dəqiqə hərəkətsizlikdən sonra dayanır. Yalnız bu cihazda saxlanılır.",
+    "Time counts while CODEVERSE is open and you are active; it pauses after 2 minutes without input. Stored on this device only.",
+    "Süre, CODEVERSE açıkken ve siz etkinken sayılır; 2 dakika hareketsizlikten sonra durur. Yalnızca bu cihazda saklanır.",
+    "Время считается, пока CODEVERSE открыт и вы активны; после 2 минут бездействия счёт останавливается. Хранится только на этом устройстве."
+  ],
+  "dashboard.goal.off": [
+    "Öyrənmə vaxtı ölçülmür, çünki Parametrlər → Məxfilik bölməsində fəaliyyətin qeydə alınması söndürülüb.",
+    "Study time is not measured because activity recording is off in Settings → Privacy.",
+    "Ayarlar → Gizlilik bölümünde etkinlik kaydı kapalı olduğu için çalışma süresi ölçülmüyor.",
+    "Время занятий не измеряется: запись активности отключена в Настройки → Конфиденциальность."
+  ],
+  "dashboard.goal.weekdays": [
+    "B.e.,Ç.a.,Ç.,C.a.,C.,Ş.,B.",
+    "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+    "Pzt,Sal,Çar,Per,Cum,Cmt,Paz",
+    "пн,вт,ср,чт,пт,сб,вс"
+  ]
+}

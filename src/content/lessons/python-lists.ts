@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 4,
   level: "beginner",
   title: { az: "Siyahılar (list)", en: "Lists" },
+  simple: {
+    az: "Siyahı nömrələnmiş rəflərə bənzəyir: hər rəfdə bir şey durur və rəflərin nömrəsi 0-dan başlayır. `cities[0]` birinci rəfdəki şeyi götürür. `append` sona yeni rəf əlavə edir. Siyahı dəyişə bilər: şeyləri əlavə edə, silə və ya dəyişdirə bilərsiniz.",
+    en: "A list is like a row of numbered shelves: one thing sits on each shelf, and the numbering starts at 0. `cities[0]` takes the thing on the first shelf. `append` adds a new shelf at the end. A list can change: you can add, remove or replace things.",
+  },
   intro: {
     what: {
       az: "Siyahı (list) bir neçə dəyəri müəyyən ardıcıllıqla saxlayan dəyişkən (mutable) kolleksiyadır. Kvadrat mötərizədə, vergüllə ayrılmış elementlərlə yazılır: `[1, 2, 3]`.",
@@ -100,8 +104,8 @@ const lesson: Lesson = {
   exercise: {
     objective: { az: "Siyahı yaratmaq, element əlavə etmək və dövrlə gəzmək.", en: "Create a list, add an item and loop over it." },
     task: {
-      az: "Üç şəhər adından ibarət `cities` siyahısı yaradın, sonuna `\"Ganja\"` əlavə edin və hər şəhəri nömrəsi ilə çap edin: `1. Baku`, `2. …`.",
-      en: "Create a `cities` list with three city names, append `\"Ganja\"`, then print each city with its number: `1. Baku`, `2. …`.",
+      az: "`cities = [\"Baku\", \"Sumgait\", \"Shaki\"]` siyahısının sonuna `\"Ganja\"` əlavə edin və hər şəhəri nömrəsi ilə çap edin: `1. Baku`, `2. …`.",
+      en: "Take the list `cities = [\"Baku\", \"Sumgait\", \"Shaki\"]`, append `\"Ganja\"`, then print each city with its number: `1. Baku`, `2. …`.",
     },
     hints: [
       { az: "Sona əlavə etmək üçün `append()`.", en: "Use `append()` to add to the end." },
@@ -109,6 +113,7 @@ const lesson: Lesson = {
     ],
     solution: 'cities = ["Baku", "Sumgait", "Shaki"]\ncities.append("Ganja")\nfor i, city in enumerate(cities, start=1):\n    print(f"{i}. {city}")',
     lang: "python",
+    check: { expected: "1. Baku\n2. Sumgait\n3. Shaki\n4. Ganja", starter: 'cities = ["Baku", "Sumgait", "Shaki"]\n' },
   },
   quiz: [
     {

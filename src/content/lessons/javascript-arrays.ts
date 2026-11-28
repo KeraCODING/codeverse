@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 4,
   level: "beginner",
   title: { az: "Massivlər (array)", en: "Arrays" },
+  simple: {
+    az: "Massiv qatara bənzəyir: vaqonlar ardıcıl düzülüb və nömrələri 0-dan başlayır. `push` sona vaqon qoşur. `map` hər vaqondakı yükü dəyişib yeni qatar düzəldir, `filter` isə yalnız lazım olan vaqonları saxlayır.",
+    en: "An array is like a train: the cars are in order and numbered from 0. `push` adds a car at the end. `map` builds a new train with each car's cargo changed, and `filter` keeps only the cars you need.",
+  },
   intro: {
     what: {
       az: "Massiv (array) dəyərləri sıra ilə saxlayan obyektdir. Kvadrat mötərizədə yazılır, elementlərə 0-dan başlayan indekslə müraciət olunur.",

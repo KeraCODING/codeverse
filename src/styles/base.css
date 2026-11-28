@@ -197,8 +197,12 @@ table.parts th { color: var(--text-2); font-weight: 500; font-size: 0.9em; }
 .hints, .solution { margin: 10px 0; display: flex; flex-direction: column; gap: 6px; }
 .hint { padding: 8px 12px; background: var(--bg-2); border-radius: var(--radius); margin: 0; }
 .sources { margin: 0; padding-left: 18px; }
-.bar { height: 6px; background: var(--bg-2); border-radius: 999px; overflow: hidden; }
+.bar { height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
 .bar span { display: block; height: 100%; background: var(--success); }
+.study-week { display: flex; align-items: flex-end; gap: 6px; height: 72px; margin: 12px 0 6px; }
+.study-day { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 4px; min-width: 0; }
+.study-col { width: 100%; max-width: 22px; border-radius: 4px 4px 0 0; background: var(--border); }
+.study-col.met { background: var(--success); }
 
 /* Show operators exactly as typed (no '>=' to '≥' ligatures) - learners must see the real characters. */
 code, pre, .code, .code-preview { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }

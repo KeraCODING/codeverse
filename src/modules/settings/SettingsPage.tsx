@@ -17,6 +17,7 @@ import { useSettings } from "../../core/settings/SettingsContext";
 import { useI18n } from "../../core/i18n/i18n";
 import { RangeField, SelectField, TextField, ToggleField } from "../../ui/fields";
 import { ConfirmDialog } from "../../ui/ConfirmDialog";
+import { resetStudyTime } from "../../core/study/useStudy";
 
 const LOCALE_NAMES: Record<string, string> = { az: "Azərbaycanca", tr: "Türkçe", en: "English", ru: "Русский" };
 
@@ -248,7 +249,7 @@ export default function SettingsPage() {
         confirmLabel={t("common.clear")}
         cancelLabel={t("common.cancel")}
         danger
-        onConfirm={() => void storage.clearActivity().then(() => setNotice({ kind: "ok", key: "settings.privacy.cleared" }))}
+        onConfirm={() => void Promise.all([storage.clearActivity(), resetStudyTime()]).then(() => setNotice({ kind: "ok", key: "settings.privacy.cleared" }))}
         onClose={() => setConfirm(null)}
       />
     </section>

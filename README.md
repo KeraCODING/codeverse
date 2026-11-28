@@ -8,7 +8,7 @@ masaüstü proqramdır. İnterfeys dilləri: Azərbaycan (əsas), Türk, İngili
 ## Yüklə və quraşdır (Windows 10 / 11)
 
 1. [**Releases**](https://github.com/KeraCODING/codeverse/releases/latest) səhifəsindən
-   `CODEVERSE_0.2.0_x64-setup.exe` faylını yükləyin (~2.6 MB).
+   `CODEVERSE_0.3.0_x64-setup.exe` faylını yükləyin. Python daxil olduğu üçün fayl əvvəlkindən böyükdür; internet olmadan işləyir.
 2. Faylı işə salın. Administrator hüququ lazım deyil.
 3. Windows "Windows protected your PC" (SmartScreen) desə: **More info → Run anyway**.
    Bu, quraşdırıcının hələ rəqəmsal imzası olmadığı üçündür.
@@ -20,7 +20,8 @@ Windows Parametrləri → Proqramlar → CODEVERSE.
 
 - **Proqramlaşdırma dilləri, inkişaf sahələri, freymvorklar** — 33 dil, 27 sahə, 47 texnologiya
 - **Dərslər** — sətir-sətir izah, tipik səhvlər, avtomatik yoxlanan tapşırıqlar və bilik yoxlaması
-- **Kod laboratoriyası** — JavaScript və SQL təhlükəsiz, təcrid olunmuş mühitdə işləyir
+- **Kod laboratoriyası** — JavaScript, TypeScript, Python 3, SQL və HTML/CSS canlı önizləmə; hamısı təhlükəsiz, təcrid olunmuş mühitdə, internetsiz
+- **Əmr paneli (Ctrl+K)** — istənilən bölməyə, dərsə və əmrə klaviaturadan keçid
 - **Ağıllı kod izahı, Universal axtarış, Xəta tərcüməçisi, Dillərin müqayisəsi**
 - **İnteraktiv öyrənmə** — çağırışlar, xəta tapma, nəticəni təxmin et
 - **Qeydlərim, Kod kitabxanası, Kartlar (aralıqlı təkrar), Yol xəritəsi, Layihə mərkəzi**

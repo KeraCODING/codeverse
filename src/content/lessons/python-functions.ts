@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 5,
   level: "beginner",
   title: { az: "Funksiyalar: def və return", en: "Functions: def and return" },
+  simple: {
+    az: "Funksiya resept kimidir. Bir dəfə yazırsınız: \"un və yumurta ver, mən sənə tort verəcəm\". Sonra istədiyiniz qədər istifadə edirsiniz. Parametrlər inqrediyentlərdir (`def cake(flour, eggs)`), `return` isə hazır tortu geri vermək deməkdir. `return` olmasa, mətbəxdən boş əllə qayıdırsınız (`None`).",
+    en: "A function is a recipe. You write it once: \"give me flour and eggs and I will give you a cake\", then use it as often as you like. Parameters are the ingredients (`def cake(flour, eggs)`), and `return` hands back the finished cake. Without `return` you leave the kitchen empty-handed (`None`).",
+  },
   intro: {
     what: {
       az: "Funksiya `def` açar sözü ilə yaradılan, adı olan kod blokudur. Parametrlər qəbul edir, işini görür və `return` ilə nəticə qaytara bilər.",
@@ -114,6 +118,7 @@ const lesson: Lesson = {
     ],
     solution: 'def max_of_two(a, b):\n    if a > b:\n        return a\n    return b\n\nprint(max_of_two(7, 3))',
     lang: "python",
+    check: { expected: "7", starter: 'def max_of_two(a, b):\n    pass\n\nprint(max_of_two(7, 3))\n' },
   },
   quiz: [
     {

@@ -13,6 +13,7 @@ import { CodeBlock, Rich } from "../../ui/CodeBlock";
 const RunPanel = lazy(() => import("../../ui/editor/RunPanel").then((m) => ({ default: m.RunPanel })));
 
 const MODES = ["challenges", "debug", "predict", "practice"] as const;
+const LANG_LABEL: Record<string, string> = { javascript: "JavaScript", typescript: "TypeScript", python: "Python", sql: "SQL" };
 type Mode = (typeof MODES)[number];
 
 export default function InteractivePage() {
@@ -67,7 +68,7 @@ function TaskList({ tasks, mode }: { tasks: PracticeTask[]; mode: Mode }) {
           <li key={x.id} className="result">
             <a href={`#/interactive/${mode}/${x.id}`}>
               <span className="row wrap">
-                <span className="badge">{x.lang === "sql" ? "SQL" : "JavaScript"}</span>
+                <span className="badge">{LANG_LABEL[x.lang]}</span>
                 <span className="result-title">{tx(x.title)}</span>
                 <span className="small">{"●".repeat(x.level)}{"○".repeat(3 - x.level)}</span>
                 {done && <span className="badge state-completed">✓ {t("practice.solved")}</span>}
@@ -253,7 +254,7 @@ function PracticeList() {
         {LESSON_INDEX.map((l) => (
           <li key={l.id}>
             <a href={`#/languages/${l.language}/${l.id}`}>{tx(l.title)}</a>
-            <span className="small">{l.language === "python" ? t("practice.selfCheck") : t("practice.autoCheck")}</span>
+            <span className="small">{t("practice.autoCheck")}</span>
           </li>
         ))}
       </ul>

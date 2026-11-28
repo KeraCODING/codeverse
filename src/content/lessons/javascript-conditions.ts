@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 3,
   level: "beginner",
   title: { az: "Şərtlər: if, else və müqayisə", en: "Conditions: if, else and comparison" },
+  simple: {
+    az: "Şərt qapıdakı mühafizəçi kimidir: \"biletin var? keç\" (`if`), \"yoxdur? kassaya get\" (`else`). Müqayisə operatorları (`>`, `===`, `!==`) mühafizəçinin verdiyi suallardır. Cavab həmişə ya `true`, ya da `false` olur.",
+    en: "A condition is like a guard at the door: \"do you have a ticket? go in\" (`if`), \"no ticket? go to the box office\" (`else`). Comparison operators (`>`, `===`, `!==`) are the questions the guard asks. The answer is always `true` or `false`.",
+  },
   intro: {
     what: {
       az: "`if` ifadəsi şərti yoxlayır və nəticəyə görə fərqli kod işlədir. JavaScript-də şərt mötərizədə, kod bloku isə fiqurlu mötərizədə yazılır.",

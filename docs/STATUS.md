@@ -1,6 +1,89 @@
 # CODEVERSE — Development Status
 
-Last updated: 2026-11-24 · Version 0.2.0
+Last updated: 2026-11-28 · Version 0.3.0
+
+## 0.3.0 — All lessons, search everything, simple explanations, more content (2026-11-28)
+
+| Item | Evidence |
+|---|---|
+| **All lessons** page: full list grouped by language with progress, search, language / level / status filters; in the sidebar and on the dashboard | browser + desktop window |
+| Universal Search and the Ctrl+K palette now cover cheat sheets, Git, security, visual topics, tasks, project guides and the text inside lessons | tests (`rebase`, `palindrom`, `sql injection`, a phrase found only inside a lesson) |
+| Every lesson opens with an **"In simple words"** box (everyday analogy, az + en) | test: all lessons have one |
+| 4 new lessons: `javascript-loops`, `python-strings`, `sql-filter-sort`, `sql-joins` → **17 lessons**, all auto-checked | tests |
+| 6 new challenges (JS ×2, Python ×2, SQL, TypeScript) → 21 challenges | every solution executed in tests |
+| SQL lesson examples are now executed in tests as well (all languages covered) | tests |
+| `npm test`: **298 passed** | |
+
+## 0.3.0 — Modern interface, TypeScript, web preview, faster navigation (2026-11-28)
+
+### Interface
+| Item | Evidence |
+|---|---|
+| Redesigned sidebar: logo mark, one active highlight that glides to the current section (moved with `transform`), footer with "Search and jump" (Ctrl+K) and a light/dark switch; narrow windows stack the footer | browser, light + dark, 390 px |
+| **Command palette (Ctrl+K)**: sections, all lessons and actions (run Python/TypeScript, web preview, new note, theme, sidebar), accent-insensitive filtering, ↑/↓/Enter/Esc, "search everywhere" fallback; lazy chunk (1.7 KB gzip) | browser: "pyth" → Enter opened Code Lab with Python |
+| Page transitions (fade/slide 240 ms), card and button hover/press feedback, staggered dashboard entrance; all motion turns off with Reduce motion, the OS setting or low-resource mode | code review (`--dur`/`--dur-slow` → 0) |
+| Dashboard hero: time-of-day greeting, "Continue: <lesson>" button, lessons / solved tasks / minutes today / streak, quick links (Python, web preview, challenges, flashcards, visual learning, Git visualizer) | browser |
+| Code Lab deep links: `#/codelab?lang=python|typescript|web|sql|javascript` | browser |
+
+### New runnable languages
+| Item | Evidence |
+|---|---|
+| **TypeScript** in Code Lab and lessons: Sucrase removes types (lines kept, so error lines match), then the JS sandbox runs it; honest note that types are not checked; Sucrase is a lazy chunk (46 KB gzip) loaded on the first TypeScript run | tests + browser (syntax error reported on line 2) |
+| **HTML + CSS + JS live preview**: three editors (CodeMirror HTML/CSS grammars, lazy), debounced live update, console and errors forwarded with the line in the learner's JS file; frame sandboxed without `allow-same-origin` | browser: storage, parent window and network all blocked inside the preview |
+
+### New lessons (az + en, auto-checked exercise, 3 examples, 3 mistakes, quiz)
+* `javascript-objects`, `python-dictionaries`, `typescript-basics` → 13 lessons; every lesson exercise is auto-checked.
+* New test: **every JavaScript, TypeScript and Python example in every lesson is executed and must print exactly the documented output** (all 13 lessons pass).
+
+### Performance
+| Measurement (Chromium, production build) | Before | After |
+|---|---|---|
+| Opening a section for the first time | ≈ 312 ms, "Loading…" flashes | 10–47 ms, no flash |
+| Opening a lesson | ≈ 353 ms | 63–83 ms |
+| Startup JS | 72.4 KB gzip | 74.3 KB gzip (+palette bus, hero, study tracker) |
+
+Cause: React 19 keeps a Suspense fallback visible for at least 300 ms. Navigation now runs as a
+transition (`startTransition` in the router) with one Suspense boundary that stays mounted, so the
+previous page stays visible until the next one is ready. The inner lesson boundary was removed.
+The Rust release profile was already size-optimised (LTO, `opt-level = "s"`, strip, abort).
+
+### Honest limitations
+* TypeScript is not type-checked inside the app.
+* HTML/CSS lessons are not written yet (the live preview is there for practice).
+* New lesson texts were written by me against the cited docs and are not reviewed by a native Azerbaijani speaker; tr/ru lesson bodies remain untranslated like the others.
+* Not verified inside the WebView2 desktop window (Chromium + the desktop CSP only).
+
+## 0.3.0 — Python runtime and study time (2026-11-28)
+
+### Python can now be executed (offline)
+| Item | Evidence |
+|---|---|
+| **Python 3.14 runtime**: Pyodide 314.0.8 (CPython compiled to WebAssembly) shipped inside the app under `/pyodide/` (copied from `node_modules` by `scripts/copy-pyodide.mjs` before `dev`/`build`; not committed) — works without internet | browser: runs under the exact CSP from `tauri.conf.json` |
+| Sandbox: module worker kept warm between runs (first load ≈ 2–3 s, later runs a few ms); every run gets fresh globals; network APIs removed from the worker after start-up (`js.fetch` is `None`); 5 s limit — an endless loop terminates the worker and the next run starts a new one; output capped like JS | browser: `while True` stopped at 5 s, next run worked |
+| Errors: CPython-style traceback reduced to the learner's own frames (`main.py`) with source lines and the correct line number; syntax/indentation errors with their line; known errors linked to the Error Translator | tests + browser (`ZeroDivisionError` → translator card) |
+| `input()` raises a clear `InputNotSupported` error with a hint (there is no keyboard in the sandbox) instead of hanging; `sys.exit()` ends the program normally | tests + browser |
+| Code Lab: Python 3 option with a starter program; the interpreter preloads in the background as soon as Python is selected | browser |
+| All 5 Python lesson exercises now have an in-lesson editor with automatic checking (every lesson is now auto-checked) | browser: starter fails, solution passes and is stored |
+| Interactive Learning: 5 Python challenges (levels 1–3) and 3 Python debug tasks | tests run every reference solution through real Pyodide; buggy starters verified not to pass |
+
+### Study-time tracking
+| Item | Evidence |
+|---|---|
+| Time counts while the window is visible and the learner was active (key, click, scroll, touch) in the last 2 minutes; one tick adds at most 30 s (sleep/resume safe); no timer while the window is hidden; saved once a minute and on leaving | unit tests (fake timers) |
+| Stored per local day in the generic `items` table (collection `study`) — no migration needed | tests |
+| Dashboard "Daily goal" card: today's minutes vs. goal with progress bar, minutes left / goal reached, goal streak, last 7 days chart; own weekday names (Chromium/WebView2 has no Azerbaijani short weekdays) | browser, light + dark |
+| Respects Settings → Privacy → "record activity"; "clear activity" also deletes study time (texts updated in 4 languages) | code review |
+
+### Other fixes
+* Progress bars (`.bar`) were nearly invisible (track colour = card colour in light mode); the track now uses the border colour.
+* Help texts with `code` in the run console are rendered as code instead of raw backticks.
+
+### Honest limitations
+* **Not yet verified inside the desktop WebView2 window** — verified in Chromium with the desktop CSP. Please run `npm run tauri dev` once and open Code Lab → Python.
+* The installer grows: Pyodide is ≈ 13 MB on disk (≈ 6 MB compressed), so expect an installer of roughly 8–9 MB instead of 2.6 MB (still far below the 150 MB budget). Not measured — needs a Windows build.
+* Only the Python standard library is available; third-party packages (numpy, pandas…) are not bundled.
+* Python tasks are checked by printed output, like JS/SQL.
+
 
 ## Installer (0.2.0)
 * NSIS only (the English-only MSI was dropped). Installs per user into

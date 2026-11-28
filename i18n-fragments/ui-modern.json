@@ -1,0 +1,224 @@
+{
+  "palette.open": [
+    "Axtar və keç",
+    "Search and jump",
+    "Ara ve git",
+    "Поиск и переход"
+  ],
+  "palette.title": [
+    "Əmr paneli",
+    "Command palette",
+    "Komut paleti",
+    "Палитра команд"
+  ],
+  "palette.placeholder": [
+    "Bölmə, dərs və ya əmr yazın…",
+    "Type a section, lesson or command…",
+    "Bölüm, ders veya komut yazın…",
+    "Введите раздел, урок или команду…"
+  ],
+  "palette.empty": [
+    "Heç nə tapılmadı",
+    "Nothing found",
+    "Hiçbir şey bulunamadı",
+    "Ничего не найдено"
+  ],
+  "palette.searchAll": [
+    "Hər yerdə axtar: «{q}»",
+    "Search everywhere for “{q}”",
+    "Her yerde ara: “{q}”",
+    "Искать везде: «{q}»"
+  ],
+  "palette.group.actions": [
+    "Əmrlər",
+    "Actions",
+    "Komutlar",
+    "Действия"
+  ],
+  "palette.group.sections": [
+    "Bölmələr",
+    "Sections",
+    "Bölümler",
+    "Разделы"
+  ],
+  "palette.group.lessons": [
+    "Dərslər",
+    "Lessons",
+    "Dersler",
+    "Уроки"
+  ],
+  "palette.runPython": [
+    "Python kodu yaz və işlət",
+    "Write and run Python",
+    "Python yaz ve çalıştır",
+    "Написать и запустить Python"
+  ],
+  "palette.runTs": [
+    "TypeScript kodu yaz və işlət",
+    "Write and run TypeScript",
+    "TypeScript yaz ve çalıştır",
+    "Написать и запустить TypeScript"
+  ],
+  "palette.webPreview": [
+    "HTML/CSS/JS canlı önizləmə",
+    "HTML/CSS/JS live preview",
+    "HTML/CSS/JS canlı önizleme",
+    "Живой просмотр HTML/CSS/JS"
+  ],
+  "palette.newNote": [
+    "Yeni qeyd",
+    "New note",
+    "Yeni not",
+    "Новая заметка"
+  ],
+  "palette.lightTheme": [
+    "İşıqlı temaya keç",
+    "Switch to light theme",
+    "Açık temaya geç",
+    "Светлая тема"
+  ],
+  "palette.darkTheme": [
+    "Qaranlıq temaya keç",
+    "Switch to dark theme",
+    "Koyu temaya geç",
+    "Тёмная тема"
+  ],
+  "palette.move": [
+    "seç",
+    "move",
+    "seç",
+    "выбор"
+  ],
+  "palette.choose": [
+    "aç",
+    "open",
+    "aç",
+    "открыть"
+  ],
+  "palette.close": [
+    "bağla",
+    "close",
+    "kapat",
+    "закрыть"
+  ],
+  "hero.morning": [
+    "Sabahınız xeyir!",
+    "Good morning!",
+    "Günaydın!",
+    "Доброе утро!"
+  ],
+  "hero.afternoon": [
+    "Günortanız xeyir!",
+    "Good afternoon!",
+    "Tünaydın!",
+    "Добрый день!"
+  ],
+  "hero.evening": [
+    "Axşamınız xeyir!",
+    "Good evening!",
+    "İyi akşamlar!",
+    "Добрый вечер!"
+  ],
+  "hero.night": [
+    "Gecəniz xeyrə!",
+    "Working late?",
+    "İyi geceler!",
+    "Доброй ночи!"
+  ],
+  "hero.continue": [
+    "Davam et: {lesson}",
+    "Continue: {lesson}",
+    "Devam et: {lesson}",
+    "Продолжить: {lesson}"
+  ],
+  "hero.start": [
+    "Öyrənməyə başla",
+    "Start learning",
+    "Öğrenmeye başla",
+    "Начать обучение"
+  ],
+  "hero.quick": [
+    "Sürətli keçidlər",
+    "Quick links",
+    "Hızlı bağlantılar",
+    "Быстрые ссылки"
+  ],
+  "hero.stat.lessons": [
+    "tamamlanmış dərs",
+    "lessons completed",
+    "tamamlanan ders",
+    "уроков пройдено"
+  ],
+  "hero.stat.solved": [
+    "həll olunmuş tapşırıq",
+    "tasks solved",
+    "çözülen görev",
+    "задач решено"
+  ],
+  "hero.stat.today": [
+    "dəqiqə bu gün",
+    "minutes today",
+    "dakika bugün",
+    "минут сегодня"
+  ],
+  "hero.stat.streak": [
+    "gün ardıcıl",
+    "day streak",
+    "gün art arda",
+    "дней подряд"
+  ],
+  "hero.q.python": [
+    "Python",
+    "Python",
+    "Python",
+    "Python"
+  ],
+  "hero.q.pythonSub": [
+    "Yaz və dərhal işlət",
+    "Write and run instantly",
+    "Yaz ve hemen çalıştır",
+    "Пишите и запускайте"
+  ],
+  "hero.q.web": [
+    "Veb önizləmə",
+    "Web preview",
+    "Web önizleme",
+    "Веб-просмотр"
+  ],
+  "hero.q.webSub": [
+    "HTML, CSS və JS canlı",
+    "HTML, CSS and JS live",
+    "HTML, CSS ve JS canlı",
+    "HTML, CSS и JS вживую"
+  ],
+  "hero.q.challengesSub": [
+    "Avtomatik yoxlanan tapşırıqlar",
+    "Auto-checked tasks",
+    "Otomatik kontrol edilen görevler",
+    "Задачи с автопроверкой"
+  ],
+  "hero.q.cardsSub": [
+    "Terminləri təkrarla",
+    "Review terms",
+    "Terimleri tekrarla",
+    "Повторяйте термины"
+  ],
+  "hero.q.visualSub": [
+    "Anlayışları gör",
+    "See the concepts",
+    "Kavramları gör",
+    "Смотрите концепции"
+  ],
+  "hero.q.gitSub": [
+    "Git əmrlərini sına",
+    "Try Git commands",
+    "Git komutlarını dene",
+    "Пробуйте команды Git"
+  ],
+  "palette.group.search": [
+    "Axtarış",
+    "Search",
+    "Arama",
+    "Поиск"
+  ]
+}

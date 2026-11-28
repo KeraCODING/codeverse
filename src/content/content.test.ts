@@ -133,3 +133,14 @@ describe("progress rules", () => {
     expect(scoreQuiz(l.quiz, [l.quiz[0].answer, null, null])).toBe(33);
   });
 });
+
+describe("simple explanations", () => {
+  it("every lesson starts with a plain-words explanation in az and en", async () => {
+    const { LESSON_INDEX, loadLesson } = await import("./index");
+    for (const meta of LESSON_INDEX) {
+      const l = (await loadLesson(meta.id))!;
+      expect(l.simple.az && l.simple.en, l.id).toBeTruthy();
+      expect(l.simple.az!.length, l.id).toBeGreaterThan(120);
+    }
+  });
+});

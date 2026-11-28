@@ -7,7 +7,7 @@ import { TERMS } from "../../knowledge/keywords";
 import { getIndex, normalize, related, search, type DocType, type SearchDoc } from "../../knowledge/search";
 import { TermCard } from "./TermCard";
 
-const TYPES: (DocType | "all")[] = ["all", "term", "lesson", "language", "error", "comparison", "technology", "field"];
+const TYPES: (DocType | "all")[] = ["all", "lesson", "term", "task", "cheatsheet", "error", "language", "comparison", "technology", "field", "git", "visual", "security", "project"];
 
 function useSearchStore() {
   const { storage, settings } = useSettings();

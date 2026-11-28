@@ -1,11 +1,13 @@
 {
   "name": "codeverse",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "CODEVERSE — programming learning and developer ecosystem ",
   "scripts": {
+    "predev": "node scripts/copy-pyodide.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/copy-pyodide.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
@@ -15,6 +17,8 @@
   "dependencies": {
     "@codemirror/autocomplete": "^6.20.4",
     "@codemirror/commands": "^6.11.1",
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.12",
     "@codemirror/lang-javascript": "^6.2.5",
     "@codemirror/lang-python": "^6.2.1",
     "@codemirror/lang-sql": "^6.10.0",
@@ -24,9 +28,11 @@
     "@lezer/highlight": "^1.2.5",
     "@tauri-apps/api": "^2.12.5",
     "@tauri-apps/plugin-sql": "^2.6.0",
+    "pyodide": "^314.0.8",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "sql.js": "^1.17.0"
+    "sql.js": "^1.17.0",
+    "sucrase": "^3.35.1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.12.6",

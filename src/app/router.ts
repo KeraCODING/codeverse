@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { startTransition, useEffect, useState } from "react";
 
 // Hash routing (#/languages/python/python-variables): works from file://, inside Tauri and on
 // static hosting. The first segment selects the module; the rest are module parameters.
-function segments(): string[] {
-  return location.hash
+function segments(hash: string = location.hash): string[] {
+  return hash
     .replace(/^#\/?/, "")
     .split("?")[0]
     .split("/")
@@ -23,7 +23,9 @@ export function navigate(path: string) {
 function useHash(): string {
   const [hash, setHash] = useState(() => location.hash);
   useEffect(() => {
-    const on = () => setHash(location.hash);
+    // A transition keeps the current page on screen while the next one loads, instead of
+    // flashing the loading placeholder (which React keeps visible for at least 300 ms).
+    const on = () => startTransition(() => setHash(location.hash));
     addEventListener("hashchange", on);
     return () => removeEventListener("hashchange", on);
   }, []);
@@ -31,12 +33,12 @@ function useHash(): string {
 }
 
 export function useRoute(fallback: string): string {
-  useHash();
-  return currentRoute() || fallback;
+  const hash = useHash();
+  return segments(hash)[0] || fallback;
 }
 
 /** Parameters after the module id, e.g. ["python", "python-variables"]. */
 export function useRouteParams(): string[] {
-  useHash();
-  return segments().slice(1);
+  const hash = useHash();
+  return segments(hash).slice(1);
 }

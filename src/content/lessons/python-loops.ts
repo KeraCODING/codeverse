@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 3,
   level: "beginner",
   title: { az: "Dövrlər: for və while", en: "Loops: for and while" },
+  simple: {
+    az: "Dövr eyni işi təkrar-təkrar görmək deməkdir. `for` siyahıdakı hər şey üçün bir dəfə işləyir, sanki səbətdəki hər almanı bir-bir götürüb yoxlayırsınız. `while` isə şərt doğru olduğu müddətcə davam edir: \"çaydan qaynayana qədər gözlə\". Şərt heç vaxt dəyişməsə, dövr heç vaxt bitməz.",
+    en: "A loop means doing the same job again and again. `for` runs once for every item, like taking each apple from a basket one by one. `while` keeps going as long as a condition is true: \"wait until the kettle boils\". If the condition never changes, the loop never ends.",
+  },
   intro: {
     what: {
       az: "Dövr (loop) eyni kod blokunu dəfələrlə işlədir. Python-da iki əsas dövr var: `for` — ardıcıllığın (siyahı, mətn, `range`) hər elementi üçün; `while` — şərt doğru olduqca.",
@@ -114,6 +118,7 @@ const lesson: Lesson = {
     ],
     solution: 'total = 0\nfor n in range(1, 11):\n    total += n\nprint(total)',
     lang: "python",
+    check: { expected: "55", starter: 'total = 0\n' },
   },
   quiz: [
     {

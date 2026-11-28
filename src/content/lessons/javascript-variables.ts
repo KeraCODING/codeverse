@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 1,
   level: "absolute",
   title: { az: "Dəyişənlər: let, const və var", en: "Variables: let, const and var" },
+  simple: {
+    az: "Dəyişən üzərində etiket olan qutudur. `const` möhürlənmiş qutudur: içinə bir dəfə qoyursunuz, sonra başqa şeylə əvəz etmək olmur. `let` adi qutudur: içindəkini istədiyiniz vaxt dəyişə bilərsiniz. `var` köhnə üsuldur, müasir kodda demək olar istifadə olunmur.",
+    en: "A variable is a box with a label. `const` is a sealed box: you put something in once and can't swap it for something else. `let` is an ordinary box: you can change what's inside whenever you like. `var` is the old way and is rarely used in modern code.",
+  },
   intro: {
     what: {
       az: "JavaScript-də dəyişən üç açar sözlə elan edilir: `let` (dəyəri dəyişə bilər), `const` (yenidən mənimsədilə bilməz) və köhnə `var`.",

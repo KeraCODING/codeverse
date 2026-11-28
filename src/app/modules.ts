@@ -21,6 +21,7 @@ export const MODULES: ModuleDef[] = [
   { id: "progress", icon: "chart", group: "overview", phase: 2, status: "done", load: () => import("../modules/progress/ProgressPage") },
   { id: "roadmap", icon: "route", group: "overview", phase: 5, status: "done", load: () => import("../modules/roadmap/RoadmapPage") },
 
+  { id: "lessons", icon: "book", group: "learn", phase: 2, status: "done", load: () => import("../modules/lessons/LessonsPage") },
   { id: "languages", icon: "code", group: "learn", phase: 2, status: "done", load: () => import("../modules/languages/LanguagesPage") },
   { id: "fields", icon: "layers", group: "learn", phase: 2, status: "done", load: () => import("../modules/fields/FieldsPage") },
   { id: "frameworks", icon: "box", group: "learn", phase: 2, status: "done", load: () => import("../modules/frameworks/FrameworksPage") },
