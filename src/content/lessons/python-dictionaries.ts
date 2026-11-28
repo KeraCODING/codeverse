@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 6,
   level: "beginner",
   title: { az: "Lüğətlər (dict)", en: "Dictionaries (dict)" },
+  simple: {
+    az: "Lüğət telefon kitabçası kimidir: adı (açarı) tapırsınız və nömrəni (dəyəri) görürsünüz. Səhifələri bir-bir çevirməyə ehtiyac yoxdur, adla birbaşa açırsınız. Eyni ad iki dəfə yazıla bilməz: yeni nömrə köhnəsinin yerinə keçir.",
+    en: "A dictionary is like a phone book: you look up a name (the key) and see the number (the value). You don't turn the pages one by one; you go straight to the name. The same name cannot appear twice: a new number replaces the old one.",
+  },
   intro: {
     what: {
       az: "Lüğət (`dict`) — açar–dəyər cütlərini saxlayan quruluşdur: `{\"name\": \"Aysel\", \"age\": 24}`. Dəyərə sıra nömrəsi ilə yox, açarla müraciət olunur.",

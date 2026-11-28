@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 1,
   level: "beginner",
   title: { az: "TypeScript əsasları: tiplər və interfeyslər", en: "TypeScript basics: types and interfaces" },
+  simple: {
+    az: "TypeScript JavaScript-ə yazılmış qeyd-etiketlərdir: \"bu qutuya yalnız ədəd qoyulur\", \"bu funksiya mətn qaytarır\". Səhv şey qoymağa çalışsanız, redaktor dərhal qırmızı xəttlə xəbərdarlıq edir, hələ proqram işə düşməmiş. İşə salanda etiketlər çıxarılır və adi JavaScript qalır.",
+    en: "TypeScript is labels stuck on JavaScript: \"only numbers go in this box\", \"this function returns text\". Try to put the wrong thing in and the editor warns you with a red underline before the program even runs. When it runs, the labels are removed and plain JavaScript is left.",
+  },
   intro: {
     what: {
       az: "TypeScript — JavaScript-ə tiplər əlavə edən dildir. Dəyişənin, parametrin və nəticənin hansı tipdə olduğunu yazırsınız; kompilyator (`tsc`) səhvləri kod işə düşməzdən əvvəl tapır, sonra tipləri silib adi JavaScript yaradır.",

@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 2,
   level: "beginner",
   title: { az: "Şərtlər: if, elif, else", en: "Conditions: if, elif, else" },
+  simple: {
+    az: "Şərt yol ayrıcı kimidir. `if` soruşur: \"yağış yağır?\" Bəli olsa, bir yola gedirsiniz (çətir götürün). `elif` növbəti sualdır: \"bəs günəşlidir?\" `else` isə heç bir cavab uyğun gəlməyəndə gedilən yoldur. Python yuxarıdan aşağı yoxlayır və yalnız ilk uyğun yolu seçir.",
+    en: "A condition is a fork in the road. `if` asks: \"is it raining?\" If yes, you take one path (take an umbrella). `elif` is the next question: \"is it sunny instead?\" `else` is the path you take when no answer matched. Python checks from top to bottom and takes only the first path that fits.",
+  },
   intro: {
     what: {
       az: "Şərt operatoru (`if`) proqrama qərar verməyə imkan verir: şərt doğrudursa (`True`) bir kod bloku, deyilsə başqası işləyir.",

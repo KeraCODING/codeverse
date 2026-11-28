@@ -9,8 +9,19 @@ import { LESSON_INDEX } from "../content";
 import { TERMS } from "./keywords";
 import { ERROR_PATTERNS, matchErrors } from "./errors";
 import { CONCEPTS } from "./compare";
+import type { Lesson } from "../content/types";
+import { CHEATSHEETS } from "../content/cheatsheets";
+import { GIT_TOPICS } from "../content/gitAcademy";
+import { SECURITY_TOPICS } from "../content/security";
+import { PROJECT_GUIDES } from "../content/projectGuides";
+import { CHALLENGES, DEBUG_TASKS } from "../content/practice";
+import { VISUAL_TOPICS } from "../modules/visual/topics";
 
-export type DocType = "language" | "lesson" | "term" | "technology" | "field" | "error" | "comparison";
+// Lesson bodies are indexed too, so a word that only appears inside a lesson still finds it.
+// This module is a lazy chunk (Search page / command palette), so the app's startup is unaffected.
+const LESSON_BODIES = import.meta.glob<Lesson>("../content/lessons/*.ts", { import: "default", eager: true });
+
+export type DocType = "language" | "lesson" | "term" | "technology" | "field" | "error" | "comparison" | "cheatsheet" | "git" | "security" | "visual" | "task" | "project";
 
 export interface SearchDoc {
   key: string; // stable id, used for favorites
@@ -24,17 +35,8 @@ export interface SearchDoc {
   tags: string[]; // e.g. language ids, for filtering
 }
 
-const MAP: Record<string, string> = { ə: "e", ı: "i", ş: "s", ç: "c", ğ: "g", ö: "o", ü: "u", İ: "i", ё: "е" };
-
-export function normalize(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/[əışçğöüİё]/g, (c) => MAP[c] ?? c)
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+export { normalize } from "./normalize";
+import { normalize } from "./normalize";
 
 const all = (x: L | string | null | undefined): string => (!x ? "" : typeof x === "string" ? x : Object.values(x).join(" "));
 
@@ -49,9 +51,14 @@ export function getIndex(): SearchDoc[] {
 
   for (const l of LANGUAGES)
     push({ key: `language:${l.id}`, type: "language", title: l.name, subtitle: l.desc, href: `#/languages/${l.id}`, tags: [l.id], body: all(l.desc) + " " + all(l.uses) + " " + (l.creators ?? "") });
+  const bodies = new Map(Object.values(LESSON_BODIES).map((l) => [l.id, l]));
   for (const l of LESSON_INDEX) {
     const lang = LANGUAGES.find((x) => x.id === l.language);
-    push({ key: `lesson:${l.id}`, type: "lesson", title: l.title, subtitle: lang?.name, href: `#/languages/${l.language}/${l.id}`, tags: [l.language], body: lang?.name ?? "" });
+    const b = bodies.get(l.id);
+    const body = b
+      ? [all(b.simple), all(b.intro.what), all(b.intro.why), all(b.intro.where), b.syntax.code, ...b.syntax.parts.map((p) => p.token + " " + all(p.role)), ...b.examples.map((e) => all(e.title) + " " + e.code), ...b.mistakes.map((m) => all(m.title)), ...b.terms.map((t) => t.en + " " + all(t.local))].join(" ")
+      : "";
+    push({ key: `lesson:${l.id}`, type: "lesson", title: l.title, subtitle: lang?.name, href: `#/languages/${l.language}/${l.id}`, tags: [l.language], body: (lang?.name ?? "") + " " + body });
   }
   for (const t of TERMS)
     push({
@@ -66,6 +73,24 @@ export function getIndex(): SearchDoc[] {
     push({ key: `error:${e.id}`, type: "error", title: e.title, subtitle: e.meaning, href: `#/errors/${e.id}`, tags: [e.tech], body: all(e.meaning) + " " + e.causes.map(all).join(" ") });
   for (const c of CONCEPTS)
     push({ key: `comparison:${c.id}`, type: "comparison", title: c.title, subtitle: c.note, href: `#/compare/${c.id}`, tags: [], body: all(c.note) + " " + Object.values(c.code).join(" ") });
+  for (const sheet of CHEATSHEETS)
+    for (const sec of sheet.sections)
+      push({
+        key: `cheatsheet:${sheet.id}:${sec.id}`, type: "cheatsheet", title: sec.title, subtitle: sheet.name, href: `#/cheatsheets/${sheet.id}/${sec.id}`, tags: [sheet.lang],
+        extraTitle: sheet.name, body: sec.entries.map((e) => e.code + " " + all(e.note)).join(" "),
+      });
+  for (const g of GIT_TOPICS)
+    push({ key: `git:${g.id}`, type: "git", title: g.title, subtitle: g.summary, href: `#/git/${g.id}`, tags: ["git"], body: all(g.summary) + " " + all(g.what) + " " + all(g.how) + " " + g.examples.map((e) => JSON.stringify(e)).join(" ") });
+  for (const x of SECURITY_TOPICS)
+    push({ key: `security:${x.id}`, type: "security", title: x.title, subtitle: x.intro, href: `#/security/${x.id}`, tags: ["security"], body: all(x.intro) + " " + x.concepts.map((c) => JSON.stringify(c)).join(" ") });
+  for (const v of VISUAL_TOPICS)
+    push({ key: `visual:${v.id}`, type: "visual", title: v.title, subtitle: v.summary, href: `#/visual/${v.id}`, tags: [v.code.lang], body: all(v.summary) + " " + all(v.intro) + " " + v.code.src });
+  for (const task of CHALLENGES)
+    push({ key: `task:${task.id}`, type: "task", title: task.title, subtitle: task.task, href: `#/interactive/challenges/${task.id}`, tags: [task.lang], body: all(task.task) });
+  for (const task of DEBUG_TASKS)
+    push({ key: `task:${task.id}`, type: "task", title: task.title, subtitle: task.task, href: `#/interactive/debug/${task.id}`, tags: [task.lang], body: all(task.task) + " " + all(task.why) });
+  for (const g of PROJECT_GUIDES)
+    push({ key: `project:${g.id}`, type: "project", title: g.title, subtitle: g.tech.join(", "), href: `#/projects/guide/${g.id}`, tags: [], body: JSON.stringify(g) });
   cached = docs;
   return docs;
 }
@@ -93,7 +118,7 @@ export interface SearchHit {
   fuzzy: boolean;
 }
 
-const TYPE_BOOST: Record<DocType, number> = { term: 6, lesson: 5, language: 4, error: 3, comparison: 2, technology: 2, field: 1 };
+const TYPE_BOOST: Record<DocType, number> = { term: 6, lesson: 5, language: 4, error: 3, cheatsheet: 3, task: 3, comparison: 2, technology: 2, git: 2, visual: 2, security: 2, project: 2, field: 1 };
 
 /** Scores every document. Exact > prefix > word > substring > body > fuzzy (typo). */
 export function search(query: string, opts: { type?: DocType | "all"; limit?: number } = {}): SearchHit[] {

@@ -12,12 +12,12 @@ import { openPalette } from "../../app/paletteBus";
 import { dayKey, goalStreak, lastDays } from "../../core/study/studyTime";
 
 const QUICK: { href: string; icon: IconName; title: string; sub: string }[] = [
+  { href: "#/lessons", icon: "book", title: "hero.q.lessons", sub: "hero.q.lessonsSub" },
   { href: "#/codelab?lang=python", icon: "terminal", title: "hero.q.python", sub: "hero.q.pythonSub" },
   { href: "#/codelab?lang=web", icon: "globe", title: "hero.q.web", sub: "hero.q.webSub" },
   { href: "#/interactive", icon: "play", title: "module.interactive.title", sub: "hero.q.challengesSub" },
   { href: "#/flashcards", icon: "cards", title: "module.flashcards.title", sub: "hero.q.cardsSub" },
   { href: "#/visual", icon: "eye", title: "module.visual.title", sub: "hero.q.visualSub" },
-  { href: "#/gitviz", icon: "graph", title: "module.gitviz.title", sub: "hero.q.gitSub" },
 ];
 
 function greetingKey(h: number) {
@@ -99,7 +99,7 @@ export default function Dashboard() {
 
   return (
     <section className="page" aria-labelledby="page-title">
-      <Hero completed={completed} resumeHref={resume ? `#/languages/${resume.language}/${resume.id}` : "#/languages"} resumeTitle={resume ? tx(resume.title) : null} />
+      <Hero completed={completed} resumeHref={resume ? `#/languages/${resume.language}/${resume.id}` : "#/lessons"} resumeTitle={resume ? tx(resume.title) : null} />
       <h1 id="page-title" className="sr-only">{t("dashboard.title")}</h1>
 
       <nav className="quick stagger" aria-label={t("hero.quick")}>

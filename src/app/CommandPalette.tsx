@@ -5,12 +5,18 @@ import { useI18n } from "../core/i18n/i18n";
 import { useSettings } from "../core/settings/SettingsContext";
 import { LESSON_INDEX } from "../content";
 import { useContent } from "../content/useContent";
-import { normalize } from "../knowledge/search";
+import { normalize } from "../knowledge/normalize";
 import { resolveTheme, systemPrefersDark } from "../core/theme/theme";
+import type { DocType, SearchHit } from "../knowledge/search";
+
+const TYPE_ICON: Record<DocType, IconName> = {
+  language: "code", lesson: "book", term: "spark", technology: "box", field: "layers", error: "alert", comparison: "columns",
+  cheatsheet: "doc", git: "branch", security: "shield", visual: "eye", task: "play", project: "folder",
+};
 
 interface Item {
   id: string;
-  group: "actions" | "sections" | "lessons" | "search";
+  group: "actions" | "sections" | "lessons" | "results" | "search";
   icon: IconName;
   label: string;
   hint?: string;
@@ -28,6 +34,25 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
   const { settings, update } = useSettings();
   const [query, setQuery] = useState("");
   const [sel, setSel] = useState(0);
+  const [hits, setHits] = useState<SearchHit[]>([]);
+
+  // Live results from the Universal Search index (all content). The index is a lazy chunk,
+  // loaded on the first keystroke and cached afterwards.
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) {
+      setHits([]);
+      return;
+    }
+    let live = true;
+    const id = setTimeout(() => {
+      void import("../knowledge/search").then((m) => live && setHits(m.search(q, { limit: 8 })));
+    }, 80);
+    return () => {
+      live = false;
+      clearTimeout(id);
+    };
+  }, [query]);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
@@ -73,9 +98,16 @@ export default function CommandPalette({ onClose }: { onClose: () => void }) {
       .filter((r) => r.score > 0)
       .sort((a, b) => b.score - a.score);
     const out = scored.map((r) => r.x);
+    const seen = new Set(out.filter((x) => x.group === "lessons").map((x) => x.id.slice(2)));
+    for (const h of hits) {
+      if (h.doc.type === "lesson" && seen.has(h.doc.key.slice(7))) continue;
+      const title = typeof h.doc.title === "string" ? h.doc.title : tx(h.doc.title);
+      const href = h.doc.href.replace(/^#\//, "");
+      out.push({ id: `r-${h.doc.key}`, group: "results", icon: TYPE_ICON[h.doc.type], label: title, hint: t(`search.type.${h.doc.type}`), run: () => go(href) });
+    }
     out.push({ id: "search", group: "search", icon: "search", label: t("palette.searchAll", { q: query.trim() }), run: () => go(`search?q=${encodeURIComponent(query.trim())}`) });
     return out;
-  }, [all, query, t]);
+  }, [all, query, t, hits, tx]);
 
   useEffect(() => setSel(0), [query]);
   useEffect(() => {

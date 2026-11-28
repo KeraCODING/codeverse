@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 1,
   level: "absolute",
   title: { az: "Dəyişənlər və məlumat tipləri", en: "Variables and data types" },
+  simple: {
+    az: "Dəyişəni üzərində ad yazılmış qutu kimi təsəvvür edin. `age = 24` deyəndə \"age\" adlı qutuya 24 qoyursunuz. Sonra `age` yazdıqda Python qutunu açıb içindəkini götürür. Qutuya yeni dəyər qoysanız, köhnəsi çıxarılır. Məlumat tipi isə qutunun içindəkinin növüdür: ədəd (`int`, `float`), mətn (`str`) və ya bəli/xeyr (`bool`).",
+    en: "Think of a variable as a box with a name written on it. `age = 24` puts 24 into the box called \"age\". Later, writing `age` makes Python open the box and take out what is inside. Put a new value in and the old one is taken out. The data type is what kind of thing is inside: a number (`int`, `float`), text (`str`) or yes/no (`bool`).",
+  },
   intro: {
     what: {
       az: "Dəyişən (variable) — dəyərə verilən addır. Python-da `ad = dəyər` yazanda Python dəyəri yaddaşda yaradır və `ad` sözünü ona bağlayır.",

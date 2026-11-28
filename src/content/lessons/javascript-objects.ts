@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 5,
   level: "beginner",
   title: { az: "Obyektlər (object)", en: "Objects" },
+  simple: {
+    az: "Obyekt şəxsiyyət vəsiqəsinə bənzəyir: bir insan haqqında məlumat bir kartda, hər biri öz başlığı altında yazılıb (`name: \"Aysel\"`, `age: 24`). Massivdən fərqli olaraq lazım olanı nömrə ilə yox, başlıqla tapırsınız: `user.name`.",
+    en: "An object is like an ID card: all the facts about one person are on one card, each under its own heading (`name: \"Aysel\"`, `age: 24`). Unlike an array, you find what you need by its heading, not by a number: `user.name`.",
+  },
   intro: {
     what: {
       az: "Obyekt — açar–dəyər cütlərindən ibarət məlumat quruluşudur: `{ name: \"Aysel\", age: 24 }`. Hər açar (xüsusiyyət, property) bir dəyərə bağlanır.",

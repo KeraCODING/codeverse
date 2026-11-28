@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 4,
   level: "beginner",
   title: { az: "Siyahılar (list)", en: "Lists" },
+  simple: {
+    az: "Siyahı nömrələnmiş rəflərə bənzəyir: hər rəfdə bir şey durur və rəflərin nömrəsi 0-dan başlayır. `cities[0]` birinci rəfdəki şeyi götürür. `append` sona yeni rəf əlavə edir. Siyahı dəyişə bilər: şeyləri əlavə edə, silə və ya dəyişdirə bilərsiniz.",
+    en: "A list is like a row of numbered shelves: one thing sits on each shelf, and the numbering starts at 0. `cities[0]` takes the thing on the first shelf. `append` adds a new shelf at the end. A list can change: you can add, remove or replace things.",
+  },
   intro: {
     what: {
       az: "Siyahı (list) bir neçə dəyəri müəyyən ardıcıllıqla saxlayan dəyişkən (mutable) kolleksiyadır. Kvadrat mötərizədə, vergüllə ayrılmış elementlərlə yazılır: `[1, 2, 3]`.",

@@ -205,3 +205,16 @@ describe("search history storage", () => {
     expect(await s.getFavorites()).toEqual(["lesson:python-loops"]);
   });
 });
+
+describe("search covers all content", () => {
+  it("indexes cheat sheets, Git, security, visual topics, tasks, project guides and lesson bodies", async () => {
+    const { getIndex, search } = await import("./search");
+    const types = new Set(getIndex().map((d) => d.type));
+    for (const ty of ["cheatsheet", "git", "security", "visual", "task", "project", "lesson"]) expect(types.has(ty as never), ty).toBe(true);
+    expect(search("rebase").some((h) => h.doc.type === "git")).toBe(true);
+    expect(search("palindrom").some((h) => h.doc.type === "task")).toBe(true);
+    expect(search("sql injection").some((h) => h.doc.type === "security")).toBe(true);
+    // A word that appears only inside a lesson body (the phone-book analogy) still finds the lesson.
+    expect(search("telefon kitabcasi").some((h) => h.doc.key === "lesson:python-dictionaries")).toBe(true);
+  });
+});

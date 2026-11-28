@@ -91,6 +91,8 @@ export interface Lesson {
   order: number;
   level: Level;
   title: L;
+  /** Plain-words explanation with an everyday analogy, shown first ("In simple words"). */
+  simple: L;
   intro: { what: L; why: L; where: L };
   syntax: { code: string; lang: CodeLang; parts: SyntaxPart[] };
   examples: CodeExample[];

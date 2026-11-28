@@ -6,6 +6,10 @@ const lesson: Lesson = {
   order: 2,
   level: "beginner",
   title: { az: "Funksiyalar", en: "Functions" },
+  simple: {
+    az: "Funksiya qəhvə maşınına bənzəyir: düyməni basırsınız (çağırırsınız), içinə dən və su verirsiniz (arqumentlər), o da sizə qəhvə qaytarır (`return`). Eyni maşını gün ərzində dəfələrlə istifadə edirsiniz, hər dəfə yenisini qurmursunuz.",
+    en: "A function is like a coffee machine: you press the button (call it), give it beans and water (the arguments), and it gives you coffee back (`return`). You use the same machine many times a day instead of building a new one each time.",
+  },
   intro: {
     what: {
       az: "Funksiya (function) — adı olan, təkrar istifadə edilə bilən kod blokudur. Giriş dəyərləri (parametrlər) qəbul edir və `return` ilə nəticə qaytara bilər.",

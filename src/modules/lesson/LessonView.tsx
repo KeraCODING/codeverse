@@ -8,6 +8,7 @@ import { LOCALE_NAMES, useContent } from "../../content/useContent";
 import { CodeBlock, Rich } from "../../ui/CodeBlock";
 import { Quiz } from "./Quiz";
 import { ExerciseBlock } from "./ExerciseBlock";
+import { Icon } from "../../ui/Icon";
 
 const SECTIONS = ["intro", "syntax", "examples", "mistakes", "exercise", "quiz", "related"] as const;
 
@@ -69,6 +70,11 @@ function LessonBody({ lesson, state }: { lesson: Lesson; state?: string }) {
           {t("lesson.partialTranslation", { lang: LOCALE_NAMES[preferred], pct: completeness })}
         </div>
       )}
+
+      <aside className="simple-box" aria-labelledby="l-simple">
+        <h2 id="l-simple"><Icon name="spark" /> {t("lesson.simple")}</h2>
+        <p><Rich text={tx(lesson.simple)} /></p>
+      </aside>
 
       <nav className="toc" aria-label={t("lesson.contents")}>
         {SECTIONS.map((s) => (

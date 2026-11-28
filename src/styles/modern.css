@@ -169,3 +169,37 @@ kbd {
   .foot-btn .label, .foot-btn kbd { display: none; }
   .hero { padding: 18px; }
 }
+
+/* "In simple words" box at the top of every lesson */
+.simple-box {
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent) 10%, var(--card));
+  border-radius: var(--radius-lg); padding: 16px 20px;
+}
+.simple-box h2 { margin-bottom: 6px; }
+.simple-box p { margin: 0; font-size: 1.05em; line-height: 1.65; }
+
+/* Lessons page */
+.lesson-filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.lesson-filters select { min-width: 0; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-2); }
+.seg-btn { font: inherit; font-size: 0.9em; color: var(--text-2); background: none; border: 0; padding: 6px 12px; cursor: pointer; transition: background-color var(--dur), color var(--dur); }
+.seg-btn + .seg-btn { border-left: 1px solid var(--border); }
+.seg-btn[aria-checked="true"] { background: var(--accent); color: var(--on-accent); }
+.lesson-group h2 a { color: var(--text); text-decoration: none; }
+.lesson-rows { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.lesson-row {
+  display: flex; align-items: center; gap: 12px; padding: 9px 10px; border-radius: var(--radius);
+  color: var(--text); text-decoration: none; transition: background-color var(--dur), transform var(--dur) var(--ease);
+}
+.lesson-row:hover { background: var(--bg-2); }
+.lesson-row:hover svg:last-child { transform: translateX(3px); }
+.lesson-row svg:last-child { color: var(--muted); transition: transform var(--dur) var(--ease); }
+.lesson-row-title { flex: 1; min-width: 0; font-weight: 500; }
+.lesson-dot {
+  flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 0.8em;
+  border: 1px solid var(--border); color: var(--text-2);
+}
+.lesson-dot.inProgress { border-color: var(--accent); color: var(--accent); }
+.lesson-dot.completed { background: var(--success); border-color: var(--success); color: var(--on-accent); }
+@media (max-width: 720px) { .lesson-row .badge { display: none; } }

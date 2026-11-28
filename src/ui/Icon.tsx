@@ -31,6 +31,7 @@ const PATHS = {
   globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18",
   bolt: "M13 2L4 14h7l-1 8 9-12h-7l1-8z",
   arrow: "M5 12h14M13 6l6 6-6 6",
+  book: "M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5zM4 19a2 2 0 0 1 2-2h13M9 7h6",
 } as const;
 
 export type IconName = keyof typeof PATHS;
