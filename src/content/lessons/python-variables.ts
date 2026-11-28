@@ -100,8 +100,8 @@ const lesson: Lesson = {
   exercise: {
     objective: { az: "Müxtəlif tipli dəyişənlər yaratmaq və onları f-sətirdə birləşdirmək.", en: "Create variables of different types and combine them in an f-string." },
     task: {
-      az: "`city` (mətn) və `temperature` (kəsr ədəd) dəyişənlərini yaradın. Sonra ekrana belə bir cümlə çıxarın: `Baku: 18.5 °C`.",
-      en: "Create `city` (text) and `temperature` (decimal number) variables. Then print a sentence like: `Baku: 18.5 °C`.",
+      az: "`city` (mətn) və `temperature` (kəsr ədəd) dəyişənlərini yaradın. Sonra dəyişənlərdən istifadə edərək dəqiq bu cümləni çap edin: `Baku: 18.5 °C`.",
+      en: "Create `city` (text) and `temperature` (decimal number) variables. Then use the variables to print exactly: `Baku: 18.5 °C`.",
     },
     hints: [
       { az: "Mətn dırnaq içində yazılır, kəsr ədəd isə nöqtə ilə: `18.5`.", en: "Text goes in quotes; a decimal uses a dot: `18.5`." },
@@ -109,6 +109,7 @@ const lesson: Lesson = {
     ],
     solution: 'city = "Baku"\ntemperature = 18.5\nprint(f"{city}: {temperature} °C")',
     lang: "python",
+    check: { expected: "Baku: 18.5 °C", starter: '# city and temperature\n' },
   },
   quiz: [
     {

@@ -5,6 +5,7 @@ import { currentRoute, useRoute } from "./router";
 import { ModuleStatusPage } from "../modules/status/ModuleStatusPage";
 import { useI18n } from "../core/i18n/i18n";
 import { useSettings } from "../core/settings/SettingsContext";
+import { useStudyTracker } from "../core/study/useStudy";
 
 // React.lazy wrappers are created once per module, on first visit only.
 const lazyCache = new Map<string, LazyExoticComponent<ComponentType>>();
@@ -30,8 +31,9 @@ export function startRoute(startPage: string): string {
 }
 
 export function Shell({ storageWarning }: { storageWarning?: string }) {
-  const { settings, logActivity } = useSettings();
+  const { settings, logActivity, storage } = useSettings();
   const { t } = useI18n();
+  useStudyTracker(storage, settings.recordActivity);
   const route = useRoute(startRoute(settings.startPage));
   const known = MODULES.some((m) => m.id === route);
   const id = known ? route : "dashboard";

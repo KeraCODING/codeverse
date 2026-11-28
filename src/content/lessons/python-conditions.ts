@@ -112,8 +112,8 @@ const lesson: Lesson = {
   exercise: {
     objective: { az: "`if`/`elif`/`else` ilə üç vəziyyəti ayırmaq.", en: "Separate three cases with `if`/`elif`/`else`." },
     task: {
-      az: "`number` dəyişəni üçün yoxlayın: müsbətdirsə `Positive`, mənfidirsə `Negative`, sıfırdırsa `Zero` çap edin.",
-      en: "For a variable `number`, print `Positive` if it is above zero, `Negative` if below, and `Zero` if it equals zero.",
+      az: "`number = -4` dəyişəni üçün yoxlayın: müsbətdirsə `Positive`, mənfidirsə `Negative`, sıfırdırsa `Zero` çap edin.",
+      en: "For the variable `number = -4`, print `Positive` if it is above zero, `Negative` if below, and `Zero` if it equals zero.",
     },
     hints: [
       { az: "Üç hal var, deməli `if`, bir `elif` və `else` lazımdır.", en: "There are three cases, so you need `if`, one `elif` and `else`." },
@@ -121,6 +121,7 @@ const lesson: Lesson = {
     ],
     solution: 'number = -4\nif number > 0:\n    print("Positive")\nelif number < 0:\n    print("Negative")\nelse:\n    print("Zero")',
     lang: "python",
+    check: { expected: "Negative", starter: 'number = -4\n' },
   },
   quiz: [
     {

@@ -6,10 +6,11 @@ export * from "./types";
 /** Runs code in the matching sandbox. Each runner is a lazy chunk. */
 export async function runCode(lang: RunnableLang, code: string): Promise<RunResult> {
   if (lang === "javascript") return (await import("./jsRunner")).runJs(code);
+  if (lang === "python") return (await import("./pyRunner")).runPython(code);
   return (await import("./sqlRunner")).runSql(code);
 }
 
-export const isRunnable = (lang: string): lang is RunnableLang => lang === "javascript" || lang === "sql";
+export const isRunnable = (lang: string): lang is RunnableLang => lang === "javascript" || lang === "sql" || lang === "python";
 
 export interface CheckResult {
   passed: boolean;

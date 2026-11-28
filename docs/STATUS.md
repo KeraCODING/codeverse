@@ -1,6 +1,38 @@
 # CODEVERSE — Development Status
 
-Last updated: 2026-11-24 · Version 0.2.0
+Last updated: 2026-11-28 · Version 0.2.0 (+ unreleased changes below)
+
+## Unreleased — Python runtime and study time (2026-11-28)
+
+### Python can now be executed (offline)
+| Item | Evidence |
+|---|---|
+| **Python 3.14 runtime**: Pyodide 314.0.8 (CPython compiled to WebAssembly) shipped inside the app under `/pyodide/` (copied from `node_modules` by `scripts/copy-pyodide.mjs` before `dev`/`build`; not committed) — works without internet | browser: runs under the exact CSP from `tauri.conf.json` |
+| Sandbox: module worker kept warm between runs (first load ≈ 2–3 s, later runs a few ms); every run gets fresh globals; network APIs removed from the worker after start-up (`js.fetch` is `None`); 5 s limit — an endless loop terminates the worker and the next run starts a new one; output capped like JS | browser: `while True` stopped at 5 s, next run worked |
+| Errors: CPython-style traceback reduced to the learner's own frames (`main.py`) with source lines and the correct line number; syntax/indentation errors with their line; known errors linked to the Error Translator | tests + browser (`ZeroDivisionError` → translator card) |
+| `input()` raises a clear `InputNotSupported` error with a hint (there is no keyboard in the sandbox) instead of hanging; `sys.exit()` ends the program normally | tests + browser |
+| Code Lab: Python 3 option with a starter program; the interpreter preloads in the background as soon as Python is selected | browser |
+| All 5 Python lesson exercises now have an in-lesson editor with automatic checking (every lesson is now auto-checked) | browser: starter fails, solution passes and is stored |
+| Interactive Learning: 5 Python challenges (levels 1–3) and 3 Python debug tasks | tests run every reference solution through real Pyodide; buggy starters verified not to pass |
+
+### Study-time tracking
+| Item | Evidence |
+|---|---|
+| Time counts while the window is visible and the learner was active (key, click, scroll, touch) in the last 2 minutes; one tick adds at most 30 s (sleep/resume safe); no timer while the window is hidden; saved once a minute and on leaving | unit tests (fake timers) |
+| Stored per local day in the generic `items` table (collection `study`) — no migration needed | tests |
+| Dashboard "Daily goal" card: today's minutes vs. goal with progress bar, minutes left / goal reached, goal streak, last 7 days chart; own weekday names (Chromium/WebView2 has no Azerbaijani short weekdays) | browser, light + dark |
+| Respects Settings → Privacy → "record activity"; "clear activity" also deletes study time (texts updated in 4 languages) | code review |
+
+### Other fixes
+* Progress bars (`.bar`) were nearly invisible (track colour = card colour in light mode); the track now uses the border colour.
+* Help texts with `code` in the run console are rendered as code instead of raw backticks.
+
+### Honest limitations
+* **Not yet verified inside the desktop WebView2 window** — verified in Chromium with the desktop CSP. Please run `npm run tauri dev` once and open Code Lab → Python.
+* The installer grows: Pyodide is ≈ 13 MB on disk (≈ 6 MB compressed), so expect an installer of roughly 8–9 MB instead of 2.6 MB (still far below the 150 MB budget). Not measured — needs a Windows build.
+* Only the Python standard library is available; third-party packages (numpy, pandas…) are not bundled.
+* Python tasks are checked by printed output, like JS/SQL.
+
 
 ## Installer (0.2.0)
 * NSIS only (the English-only MSI was dropped). Installs per user into

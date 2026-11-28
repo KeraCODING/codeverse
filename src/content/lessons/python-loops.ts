@@ -114,6 +114,7 @@ const lesson: Lesson = {
     ],
     solution: 'total = 0\nfor n in range(1, 11):\n    total += n\nprint(total)',
     lang: "python",
+    check: { expected: "55", starter: 'total = 0\n' },
   },
   quiz: [
     {

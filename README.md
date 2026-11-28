@@ -20,7 +20,7 @@ Windows Parametrləri → Proqramlar → CODEVERSE.
 
 - **Proqramlaşdırma dilləri, inkişaf sahələri, freymvorklar** — 33 dil, 27 sahə, 47 texnologiya
 - **Dərslər** — sətir-sətir izah, tipik səhvlər, avtomatik yoxlanan tapşırıqlar və bilik yoxlaması
-- **Kod laboratoriyası** — JavaScript və SQL təhlükəsiz, təcrid olunmuş mühitdə işləyir
+- **Kod laboratoriyası** — JavaScript, Python 3 və SQL təhlükəsiz, təcrid olunmuş mühitdə, internetsiz işləyir
 - **Ağıllı kod izahı, Universal axtarış, Xəta tərcüməçisi, Dillərin müqayisəsi**
 - **İnteraktiv öyrənmə** — çağırışlar, xəta tapma, nəticəni təxmin et
 - **Qeydlərim, Kod kitabxanası, Kartlar (aralıqlı təkrar), Yol xəritəsi, Layihə mərkəzi**

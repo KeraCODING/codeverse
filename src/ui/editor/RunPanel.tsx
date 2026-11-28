@@ -108,10 +108,11 @@ export function RunPanel({
           {err && (
             <div className="console-error">
               <pre className="err-text">
-                {err.name}: {err.message}
-                {err.line ? ` (${t("errors.line", { n: err.line })})` : ""}
+                {err.detail ? err.detail.trimEnd() : `${err.name}: ${err.message}`}
+                {err.line && !err.detail ? ` (${t("errors.line", { n: err.line })})` : ""}
               </pre>
-              {result.timedOut && <p className="small">{t("lab.timeoutHelp")}</p>}
+              {err.name === "InputNotSupported" && <p className="small"><Rich text={t("lab.inputHelp")} /></p>}
+              {result.timedOut && <p className="small"><Rich text={t("lab.timeoutHelp")} /></p>}
               {known && (
                 <p className="small">
                   <strong>{fillGroups(tx(known.pattern.title), known.groups)}</strong> — <Rich text={fillGroups(tx(known.pattern.meaning), known.groups)} />{" "}

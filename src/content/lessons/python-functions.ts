@@ -114,6 +114,7 @@ const lesson: Lesson = {
     ],
     solution: 'def max_of_two(a, b):\n    if a > b:\n        return a\n    return b\n\nprint(max_of_two(7, 3))',
     lang: "python",
+    check: { expected: "7", starter: 'def max_of_two(a, b):\n    pass\n\nprint(max_of_two(7, 3))\n' },
   },
   quiz: [
     {

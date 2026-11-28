@@ -6,6 +6,8 @@ import type { ActivityEvent } from "../../core/storage";
 import { useProgress } from "../../core/progress/ProgressContext";
 import { findLessonMeta, LESSON_INDEX } from "../../content";
 import { useContent } from "../../content/useContent";
+import { useStudyDays } from "../../core/study/useStudy";
+import { dayKey, goalStreak, lastDays } from "../../core/study/studyTime";
 
 function startOfToday(): number {
   const d = new Date();
@@ -54,14 +56,7 @@ export default function Dashboard() {
       </header>
 
       <div className="grid">
-        <article className="card">
-          <h2>{t("dashboard.goal.title")}</h2>
-          <p className="stat">{t("dashboard.goal.minutes", { n: settings.dailyGoalMinutes })}</p>
-          <p className="muted small">{t("dashboard.goal.note")}</p>
-          <a className="link" href="#/settings">
-            {t("dashboard.goal.change")}
-          </a>
-        </article>
+        <GoalCard goalMinutes={settings.dailyGoalMinutes} />
 
         <article className="card">
           <h2>{t("dashboard.today.title")}</h2>
@@ -135,3 +130,59 @@ export default function Dashboard() {
     </section>
   );
 }
+
+/** Daily goal with real study time: today's minutes, progress bar, streak and the last 7 days. */
+function GoalCard({ goalMinutes }: { goalMinutes: number }) {
+  const { t } = useI18n();
+  const days = useStudyDays();
+  const now = Date.now();
+  const goalSec = goalMinutes * 60;
+  const todaySec = days?.get(dayKey(now)) ?? 0;
+  const todayMin = Math.floor(todaySec / 60);
+  const pct = Math.min(100, Math.round((todaySec / goalSec) * 100));
+  const week = days ? lastDays(days, 7, now) : [];
+  const streak = days ? goalStreak(days, goalSec, now) : 0;
+  // Own short names: browsers (incl. WebView2) lack Azerbaijani short weekdays and fall back to English.
+  const weekdays = t("dashboard.goal.weekdays").split(",");
+  const peak = Math.max(goalSec, ...week.map((d) => d.seconds));
+
+  return (
+    <article className="card">
+      <h2>{t("dashboard.goal.title")}</h2>
+      {days ? (
+        <>
+          <p className="stat">{t("dashboard.goal.today", { n: todayMin, goal: goalMinutes })}</p>
+          <div className="bar" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} aria-label={t("dashboard.goal.title")}>
+            <span style={{ width: `${pct}%` }} />
+          </div>
+          <p className="small">
+            {todaySec >= goalSec ? `✓ ${t("dashboard.goal.reached")}` : t("dashboard.goal.left", { n: Math.max(1, goalMinutes - todayMin) })}
+            {streak > 0 && ` · ${t("dashboard.goal.streak", { n: streak })}`}
+          </p>
+          <div className="study-week" aria-label={t("dashboard.goal.week")}>
+            {week.map((d) => {
+              const label = weekdays[(new Date(`${d.key}T12:00:00`).getDay() + 6) % 7] ?? "";
+              const mins = Math.floor(d.seconds / 60);
+              return (
+                <div key={d.key} className="study-day" title={`${label}: ${t("dashboard.goal.minutes", { n: mins })}`}>
+                  <span className={`study-col${d.seconds >= goalSec ? " met" : ""}`} style={{ height: `${Math.max(4, Math.round((d.seconds / peak) * 100))}%` }} />
+                  <span className="small">{label}</span>
+                </div>
+              );
+            })}
+          </div>
+          <p className="muted small">{t("dashboard.goal.note")}</p>
+        </>
+      ) : (
+        <>
+          <p className="stat">{t("dashboard.goal.minutes", { n: goalMinutes })}</p>
+          <p className="muted small">{t("dashboard.goal.off")}</p>
+        </>
+      )}
+      <a className="link" href="#/settings">
+        {t("dashboard.goal.change")}
+      </a>
+    </article>
+  );
+}
+

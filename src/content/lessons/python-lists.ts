@@ -100,8 +100,8 @@ const lesson: Lesson = {
   exercise: {
     objective: { az: "Siyahı yaratmaq, element əlavə etmək və dövrlə gəzmək.", en: "Create a list, add an item and loop over it." },
     task: {
-      az: "Üç şəhər adından ibarət `cities` siyahısı yaradın, sonuna `\"Ganja\"` əlavə edin və hər şəhəri nömrəsi ilə çap edin: `1. Baku`, `2. …`.",
-      en: "Create a `cities` list with three city names, append `\"Ganja\"`, then print each city with its number: `1. Baku`, `2. …`.",
+      az: "`cities = [\"Baku\", \"Sumgait\", \"Shaki\"]` siyahısının sonuna `\"Ganja\"` əlavə edin və hər şəhəri nömrəsi ilə çap edin: `1. Baku`, `2. …`.",
+      en: "Take the list `cities = [\"Baku\", \"Sumgait\", \"Shaki\"]`, append `\"Ganja\"`, then print each city with its number: `1. Baku`, `2. …`.",
     },
     hints: [
       { az: "Sona əlavə etmək üçün `append()`.", en: "Use `append()` to add to the end." },
@@ -109,6 +109,7 @@ const lesson: Lesson = {
     ],
     solution: 'cities = ["Baku", "Sumgait", "Shaki"]\ncities.append("Ganja")\nfor i, city in enumerate(cities, start=1):\n    print(f"{i}. {city}")',
     lang: "python",
+    check: { expected: "1. Baku\n2. Sumgait\n3. Shaki\n4. Ganja", starter: 'cities = ["Baku", "Sumgait", "Shaki"]\n' },
   },
   quiz: [
     {

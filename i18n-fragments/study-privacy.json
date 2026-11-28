@@ -1,0 +1,14 @@
+{
+  "settings.privacy.recordActivityHint": [
+    "İdarə paneli üçün yerli jurnal (500 qeydə qədər) və gündəlik öyrənmə vaxtını saxlayır.",
+    "Keeps a local log for the dashboard (up to 500 entries) and your daily study time.",
+    "Gösterge paneli için yerel bir kayıt (500 girişe kadar) ve günlük çalışma sürenizi tutar.",
+    "Хранит локальный журнал для панели (до 500 записей) и ежедневное время занятий."
+  ],
+  "settings.privacy.clearActivityConfirm": [
+    "Bu cihazdakı bütün fəaliyyət tarixçəsi və öyrənmə vaxtı silinsin? Bu əməliyyatı geri qaytarmaq olmaz.",
+    "Delete the whole activity history and study time on this device? This cannot be undone.",
+    "Bu cihazdaki tüm etkinlik geçmişi ve çalışma süresi silinsin mi? Bu işlem geri alınamaz.",
+    "Удалить всю историю активности и время занятий на этом устройстве? Это действие нельзя отменить."
+  ]
+}

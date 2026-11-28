@@ -5,7 +5,9 @@
   "type": "module",
   "description": "CODEVERSE — programming learning and developer ecosystem ",
   "scripts": {
+    "predev": "node scripts/copy-pyodide.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/copy-pyodide.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
@@ -24,6 +26,7 @@
     "@lezer/highlight": "^1.2.5",
     "@tauri-apps/api": "^2.12.5",
     "@tauri-apps/plugin-sql": "^2.6.0",
+    "pyodide": "^314.0.8",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sql.js": "^1.17.0"

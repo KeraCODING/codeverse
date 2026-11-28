@@ -60,7 +60,8 @@ export interface Storage {
   clearCollection(collection: Collection): Promise<void>;
 }
 
-export type Collection = "notes" | "snippets" | "flashcards" | "projects" | "roadmaps";
+/** "study" holds one row per day with the seconds studied (see core/study/studyTime.ts). */
+export type Collection = "notes" | "snippets" | "flashcards" | "projects" | "roadmaps" | "study";
 export const COLLECTIONS: Collection[] = ["notes", "snippets", "flashcards", "projects", "roadmaps"];
 
 export interface StoredItem {
