@@ -1,8 +1,8 @@
 # CODEVERSE — Development Status
 
-Last updated: 2026-11-28 · Version 0.2.0 (+ unreleased changes below)
+Last updated: 2026-11-28 · Version 0.3.0
 
-## Unreleased — All lessons, search everything, simple explanations, more content (2026-11-28)
+## 0.3.0 — All lessons, search everything, simple explanations, more content (2026-11-28)
 
 | Item | Evidence |
 |---|---|
@@ -14,7 +14,7 @@ Last updated: 2026-11-28 · Version 0.2.0 (+ unreleased changes below)
 | SQL lesson examples are now executed in tests as well (all languages covered) | tests |
 | `npm test`: **298 passed** | |
 
-## Unreleased — Modern interface, TypeScript, web preview, faster navigation (2026-11-28)
+## 0.3.0 — Modern interface, TypeScript, web preview, faster navigation (2026-11-28)
 
 ### Interface
 | Item | Evidence |
@@ -53,7 +53,7 @@ The Rust release profile was already size-optimised (LTO, `opt-level = "s"`, str
 * New lesson texts were written by me against the cited docs and are not reviewed by a native Azerbaijani speaker; tr/ru lesson bodies remain untranslated like the others.
 * Not verified inside the WebView2 desktop window (Chromium + the desktop CSP only).
 
-## Unreleased — Python runtime and study time (2026-11-28)
+## 0.3.0 — Python runtime and study time (2026-11-28)
 
 ### Python can now be executed (offline)
 | Item | Evidence |

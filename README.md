@@ -8,7 +8,7 @@ masaüstü proqramdır. İnterfeys dilləri: Azərbaycan (əsas), Türk, İngili
 ## Yüklə və quraşdır (Windows 10 / 11)
 
 1. [**Releases**](https://github.com/KeraCODING/codeverse/releases/latest) səhifəsindən
-   `CODEVERSE_0.2.0_x64-setup.exe` faylını yükləyin (~2.6 MB).
+   `CODEVERSE_0.3.0_x64-setup.exe` faylını yükləyin. Python daxil olduğu üçün fayl əvvəlkindən böyükdür; internet olmadan işləyir.
 2. Faylı işə salın. Administrator hüququ lazım deyil.
 3. Windows "Windows protected your PC" (SmartScreen) desə: **More info → Run anyway**.
    Bu, quraşdırıcının hələ rəqəmsal imzası olmadığı üçündür.
