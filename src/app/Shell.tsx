@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, type ComponentType, type LazyExoticComponent } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type ComponentType, type LazyExoticComponent } from "react";
 import { Sidebar } from "./Sidebar";
 import { findModule, MODULES } from "./modules";
 import { currentRoute, useRoute } from "./router";
@@ -6,6 +6,9 @@ import { ModuleStatusPage } from "../modules/status/ModuleStatusPage";
 import { useI18n } from "../core/i18n/i18n";
 import { useSettings } from "../core/settings/SettingsContext";
 import { useStudyTracker } from "../core/study/useStudy";
+import { onPaletteOpen, openPalette } from "./paletteBus";
+
+const CommandPalette = lazy(() => import("./CommandPalette"));
 
 // React.lazy wrappers are created once per module, on first visit only.
 const lazyCache = new Map<string, LazyExoticComponent<ComponentType>>();
@@ -61,12 +64,15 @@ export function Shell({ storageWarning }: { storageWarning?: string }) {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         if (currentRoute() === "search") document.querySelector<HTMLInputElement>(".search-input.big")?.focus();
-        else location.hash = "#/search";
+        else openPalette();
       }
     };
     addEventListener("keydown", onKey);
     return () => removeEventListener("keydown", onKey);
   }, []);
+
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  useEffect(() => onPaletteOpen(() => setPaletteOpen(true)), []);
 
   const Comp = lazyFor(id);
 
@@ -82,14 +88,18 @@ export function Shell({ storageWarning }: { storageWarning?: string }) {
             {t("storage.memoryFallback")}
           </div>
         )}
-        {Comp ? (
-          <Suspense fallback={<div className="loading">{t("common.loading")}</div>}>
-            <Comp />
-          </Suspense>
-        ) : (
-          <ModuleStatusPage id={id} />
-        )}
+        {/* The boundary stays mounted across pages, so a transition can keep the old page visible. */}
+        <Suspense fallback={<div className="loading">{t("common.loading")}</div>}>
+          <div className="page-enter" key={id}>
+            {Comp ? <Comp /> : <ModuleStatusPage id={id} />}
+          </div>
+        </Suspense>
       </main>
+      {paletteOpen && (
+        <Suspense fallback={null}>
+          <CommandPalette onClose={() => setPaletteOpen(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

@@ -26,6 +26,11 @@ const PATHS = {
   gauge: "M4 18a8 8 0 1 1 16 0M12 18l4-6",
   menu: "M4 6h16M4 12h16M4 18h16",
   check: "M5 12l5 5 9-10",
+  sun: "M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4",
+  moon: "M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z",
+  globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18",
+  bolt: "M13 2L4 14h7l-1 8 9-12h-7l1-8z",
+  arrow: "M5 12h14M13 6l6 6-6 6",
 } as const;
 
 export type IconName = keyof typeof PATHS;

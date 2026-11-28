@@ -2,6 +2,7 @@ import { StrictMode, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles/tokens.css";
 import "./styles/base.css";
+import "./styles/modern.css";
 import { openStorage } from "./core/storage";
 import { sanitizeSettings } from "./core/settings/schema";
 import { SettingsProvider, useSettings } from "./core/settings/SettingsContext";

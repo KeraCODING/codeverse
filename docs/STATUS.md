@@ -2,6 +2,45 @@
 
 Last updated: 2026-11-28 · Version 0.2.0 (+ unreleased changes below)
 
+## Unreleased — Modern interface, TypeScript, web preview, faster navigation (2026-11-28)
+
+### Interface
+| Item | Evidence |
+|---|---|
+| Redesigned sidebar: logo mark, one active highlight that glides to the current section (moved with `transform`), footer with "Search and jump" (Ctrl+K) and a light/dark switch; narrow windows stack the footer | browser, light + dark, 390 px |
+| **Command palette (Ctrl+K)**: sections, all lessons and actions (run Python/TypeScript, web preview, new note, theme, sidebar), accent-insensitive filtering, ↑/↓/Enter/Esc, "search everywhere" fallback; lazy chunk (1.7 KB gzip) | browser: "pyth" → Enter opened Code Lab with Python |
+| Page transitions (fade/slide 240 ms), card and button hover/press feedback, staggered dashboard entrance; all motion turns off with Reduce motion, the OS setting or low-resource mode | code review (`--dur`/`--dur-slow` → 0) |
+| Dashboard hero: time-of-day greeting, "Continue: <lesson>" button, lessons / solved tasks / minutes today / streak, quick links (Python, web preview, challenges, flashcards, visual learning, Git visualizer) | browser |
+| Code Lab deep links: `#/codelab?lang=python|typescript|web|sql|javascript` | browser |
+
+### New runnable languages
+| Item | Evidence |
+|---|---|
+| **TypeScript** in Code Lab and lessons: Sucrase removes types (lines kept, so error lines match), then the JS sandbox runs it; honest note that types are not checked; Sucrase is a lazy chunk (46 KB gzip) loaded on the first TypeScript run | tests + browser (syntax error reported on line 2) |
+| **HTML + CSS + JS live preview**: three editors (CodeMirror HTML/CSS grammars, lazy), debounced live update, console and errors forwarded with the line in the learner's JS file; frame sandboxed without `allow-same-origin` | browser: storage, parent window and network all blocked inside the preview |
+
+### New lessons (az + en, auto-checked exercise, 3 examples, 3 mistakes, quiz)
+* `javascript-objects`, `python-dictionaries`, `typescript-basics` → 13 lessons; every lesson exercise is auto-checked.
+* New test: **every JavaScript, TypeScript and Python example in every lesson is executed and must print exactly the documented output** (all 13 lessons pass).
+
+### Performance
+| Measurement (Chromium, production build) | Before | After |
+|---|---|---|
+| Opening a section for the first time | ≈ 312 ms, "Loading…" flashes | 10–47 ms, no flash |
+| Opening a lesson | ≈ 353 ms | 63–83 ms |
+| Startup JS | 72.4 KB gzip | 74.3 KB gzip (+palette bus, hero, study tracker) |
+
+Cause: React 19 keeps a Suspense fallback visible for at least 300 ms. Navigation now runs as a
+transition (`startTransition` in the router) with one Suspense boundary that stays mounted, so the
+previous page stays visible until the next one is ready. The inner lesson boundary was removed.
+The Rust release profile was already size-optimised (LTO, `opt-level = "s"`, strip, abort).
+
+### Honest limitations
+* TypeScript is not type-checked inside the app.
+* HTML/CSS lessons are not written yet (the live preview is there for practice).
+* New lesson texts were written by me against the cited docs and are not reviewed by a native Azerbaijani speaker; tr/ru lesson bodies remain untranslated like the others.
+* Not verified inside the WebView2 desktop window (Chromium + the desktop CSP only).
+
 ## Unreleased — Python runtime and study time (2026-11-28)
 
 ### Python can now be executed (offline)

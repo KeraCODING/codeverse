@@ -13,6 +13,9 @@ export const LESSON_INDEX: LessonMeta[] = [
   { id: "javascript-conditions", language: "javascript", order: 3, level: "beginner", title: { az: "Şərtlər: if, else və müqayisə", en: "Conditions: if, else and comparison" } },
   { id: "javascript-arrays", language: "javascript", order: 4, level: "beginner", title: { az: "Massivlər (array)", en: "Arrays" } },
   { id: "sql-select", language: "sql", order: 1, level: "absolute", title: { az: "SELECT: məlumatı oxumaq", en: "SELECT: reading data" } },
+  { id: "javascript-objects", language: "javascript", order: 5, level: "beginner", title: { az: "Obyektlər (object)", en: "Objects" } },
+  { id: "python-dictionaries", language: "python", order: 6, level: "beginner", title: { az: "Lüğətlər (dict)", en: "Dictionaries (dict)" } },
+  { id: "typescript-basics", language: "typescript", order: 1, level: "beginner", title: { az: "TypeScript əsasları: tiplər və interfeyslər", en: "TypeScript basics: types and interfaces" } },
 ];
 
 const loaders = import.meta.glob<Lesson>("./lessons/*.ts", { import: "default" });

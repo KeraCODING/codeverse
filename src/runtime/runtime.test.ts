@@ -10,6 +10,7 @@ import { CHALLENGES, DEBUG_TASKS, type PracticeTask } from "../content/practice"
 import { LESSON_INDEX, loadLesson } from "../content";
 import { loadPyodide } from "pyodide";
 import { installHarness, type PyFailure } from "./pyHarness";
+import { stripTypes } from "./tsRunner";
 
 describe("Node-style value formatting", () => {
   it("formats primitives, arrays and objects like console.log", () => {
@@ -95,7 +96,13 @@ function runPyInNode(code: string): string {
 }
 
 const run = (t: Pick<PracticeTask, "lang">, code: string) =>
-  t.lang === "javascript" ? runJsInNode(code) : t.lang === "python" ? runPyInNode(code) : runSqlInNode(code);
+  t.lang === "javascript"
+    ? runJsInNode(code)
+    : t.lang === "typescript"
+      ? runJsInNode(stripTypes(code))
+      : t.lang === "python"
+        ? runPyInNode(code)
+        : runSqlInNode(code);
 const safeRun = (t: Pick<PracticeTask, "lang">, code: string) => {
   try {
     return run(t, code);
@@ -179,5 +186,29 @@ describe("Python sandbox harness", () => {
 
   it("treats sys.exit() / exit(0) as a normal end", () => {
     expect(pyRun('print("bye")\nimport sys\nsys.exit()\nprint("never")')).toBeNull();
+  });
+});
+
+describe("lesson examples print what the lesson says", () => {
+  it("every JavaScript, TypeScript and Python example produces its documented output", async () => {
+    let checked = 0;
+    for (const meta of LESSON_INDEX) {
+      const l = (await loadLesson(meta.id))!;
+      for (const ex of l.examples) {
+        if (ex.output === undefined || !["javascript", "typescript", "python"].includes(ex.lang)) continue;
+        checked++;
+        expect(normalizeOutput(run({ lang: ex.lang as PracticeTask["lang"] }, ex.code)), `${l.id}: ${ex.title.en}`).toBe(normalizeOutput(ex.output));
+      }
+    }
+    expect(checked).toBeGreaterThan(20);
+  });
+});
+
+describe("TypeScript runner", () => {
+  it("removes types but keeps every line in place", () => {
+    const src = "interface A {\n  x: number;\n}\nconst a: A = { x: 1 };\nlet s: string = \"hi\";\nconsole.log(a.x, s);";
+    const js = stripTypes(src);
+    expect(js.split("\n").length).toBe(src.split("\n").length);
+    expect(runJsInNode(js)).toBe("1 hi");
   });
 });

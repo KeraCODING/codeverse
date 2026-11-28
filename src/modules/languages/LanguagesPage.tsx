@@ -1,4 +1,4 @@
-import { lazy, Suspense, useMemo, useState } from "react";
+import { lazy, useMemo, useState } from "react";
 import { useRouteParams } from "../../app/router";
 import { useI18n } from "../../core/i18n/i18n";
 import { useProgress } from "../../core/progress/ProgressContext";
@@ -14,14 +14,10 @@ const LessonView = lazy(() => import("../lesson/LessonView"));
 export default function LanguagesPage() {
   const [langId, lessonId] = useRouteParams();
   const lang = LANGUAGES.find((l) => l.id === langId);
-  const { t } = useI18n();
   if (langId && !lang) return <NotFound />;
-  if (lang && lessonId)
-    return (
-      <Suspense fallback={<div className="loading">{t("common.loading")}</div>}>
-        <LessonView languageId={lang.id} lessonId={lessonId} />
-      </Suspense>
-    );
+  // No inner Suspense: the Shell's boundary plus the navigation transition keep the language page
+  // visible while the lesson chunk loads (an inner boundary would flash "loading" for ≥ 300 ms).
+  if (lang && lessonId) return <LessonView languageId={lang.id} lessonId={lessonId} />;
   if (lang) return <LanguageDetail lang={lang} />;
   return <LanguageList />;
 }

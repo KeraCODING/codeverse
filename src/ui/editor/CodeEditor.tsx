@@ -9,7 +9,7 @@ import { closeBrackets, closeBracketsKeymap, autocompletion, completionKeymap } 
 import { tags } from "@lezer/highlight";
 import { useSettings } from "../../core/settings/SettingsContext";
 
-export type EditorLang = "javascript" | "python" | "sql";
+export type EditorLang = "javascript" | "typescript" | "python" | "sql" | "html" | "css";
 
 // Colours come from the app's CSS variables, so light/dark/accent apply without reconfiguring.
 const highlight = HighlightStyle.define([
@@ -36,6 +36,9 @@ const baseTheme = EditorView.theme({
 // Each language parser is its own lazy chunk: opening a SQL exercise never loads the JS grammar.
 const languageExt = async (lang: EditorLang): Promise<Extension> => {
   if (lang === "javascript") return (await import("@codemirror/lang-javascript")).javascript();
+  if (lang === "typescript") return (await import("@codemirror/lang-javascript")).javascript({ typescript: true });
+  if (lang === "html") return (await import("@codemirror/lang-html")).html();
+  if (lang === "css") return (await import("@codemirror/lang-css")).css();
   if (lang === "python") return (await import("@codemirror/lang-python")).python();
   const m = await import("@codemirror/lang-sql");
   return m.sql({ dialect: m.SQLite, upperCaseKeywords: true });

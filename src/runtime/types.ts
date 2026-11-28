@@ -24,16 +24,18 @@ export const LIMITS = {
   pythonTimeoutMs: 5000,
 };
 
-export type RunnableLang = "javascript" | "sql" | "python";
+export type RunnableLang = "javascript" | "typescript" | "sql" | "python";
 
 export interface RuntimeInfo {
-  lang: "javascript" | "sql" | "python" | "other";
+  lang: "javascript" | "typescript" | "web" | "sql" | "python" | "other";
   available: boolean;
 }
 
 /** What Code Lab can execute. Python runs on the bundled Pyodide runtime (offline). */
 export const RUNTIMES: RuntimeInfo[] = [
   { lang: "javascript", available: true },
+  { lang: "typescript", available: true },
+  { lang: "web", available: true },
   { lang: "sql", available: true },
   { lang: "python", available: true },
   { lang: "other", available: false },

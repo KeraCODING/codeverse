@@ -7,7 +7,56 @@ import { useProgress } from "../../core/progress/ProgressContext";
 import { findLessonMeta, LESSON_INDEX } from "../../content";
 import { useContent } from "../../content/useContent";
 import { useStudyDays } from "../../core/study/useStudy";
+import { Icon, type IconName } from "../../ui/Icon";
+import { openPalette } from "../../app/paletteBus";
 import { dayKey, goalStreak, lastDays } from "../../core/study/studyTime";
+
+const QUICK: { href: string; icon: IconName; title: string; sub: string }[] = [
+  { href: "#/codelab?lang=python", icon: "terminal", title: "hero.q.python", sub: "hero.q.pythonSub" },
+  { href: "#/codelab?lang=web", icon: "globe", title: "hero.q.web", sub: "hero.q.webSub" },
+  { href: "#/interactive", icon: "play", title: "module.interactive.title", sub: "hero.q.challengesSub" },
+  { href: "#/flashcards", icon: "cards", title: "module.flashcards.title", sub: "hero.q.cardsSub" },
+  { href: "#/visual", icon: "eye", title: "module.visual.title", sub: "hero.q.visualSub" },
+  { href: "#/gitviz", icon: "graph", title: "module.gitviz.title", sub: "hero.q.gitSub" },
+];
+
+function greetingKey(h: number) {
+  return h < 5 ? "hero.night" : h < 12 ? "hero.morning" : h < 18 ? "hero.afternoon" : "hero.evening";
+}
+
+/** Welcome panel: greeting, "continue" call to action and the four numbers that matter. */
+function Hero({ completed, resumeHref, resumeTitle }: { completed: number; resumeHref: string; resumeTitle: string | null }) {
+  const { t } = useI18n();
+  const { settings } = useSettings();
+  const { records } = useProgress();
+  const days = useStudyDays();
+  const now = Date.now();
+  const todayMin = Math.floor((days?.get(dayKey(now)) ?? 0) / 60);
+  const streak = days ? goalStreak(days, settings.dailyGoalMinutes * 60, now) : 0;
+  const solved = [...records.values()].filter((r) => r.lessonId.startsWith("practice:") && r.state === "completed").length;
+  return (
+    <section className="hero" aria-labelledby="hero-title">
+      <div>
+        <h2 id="hero-title" className="hero-title">{t(greetingKey(new Date().getHours()))}</h2>
+        <p className="muted">{t("app.philosophy")}</p>
+        <div className="hero-actions">
+          <a className="btn primary" href={resumeHref}>
+            <Icon name="arrow" /> {resumeTitle ? t("hero.continue", { lesson: resumeTitle }) : t("hero.start")}
+          </a>
+          <button type="button" className="btn" onClick={openPalette}>
+            <Icon name="search" /> {t("palette.open")} <kbd>Ctrl K</kbd>
+          </button>
+        </div>
+      </div>
+      <div className="hero-stats">
+        <div className="hero-stat"><b>{completed}/{LESSON_INDEX.length}</b><span>{t("hero.stat.lessons")}</span></div>
+        <div className="hero-stat"><b>{solved}</b><span>{t("hero.stat.solved")}</span></div>
+        <div className="hero-stat"><b>{days ? todayMin : "—"}</b><span>{t("hero.stat.today")}</span></div>
+        <div className="hero-stat"><b>{days ? streak : "—"}</b><span>{t("hero.stat.streak")}</span></div>
+      </div>
+    </section>
+  );
+}
 
 function startOfToday(): number {
   const d = new Date();
@@ -50,12 +99,22 @@ export default function Dashboard() {
 
   return (
     <section className="page" aria-labelledby="page-title">
-      <header className="page-head">
-        <h1 id="page-title">{t("dashboard.title")}</h1>
-        <p className="muted">{t("app.philosophy")}</p>
-      </header>
+      <Hero completed={completed} resumeHref={resume ? `#/languages/${resume.language}/${resume.id}` : "#/languages"} resumeTitle={resume ? tx(resume.title) : null} />
+      <h1 id="page-title" className="sr-only">{t("dashboard.title")}</h1>
 
-      <div className="grid">
+      <nav className="quick stagger" aria-label={t("hero.quick")}>
+        {QUICK.map((q) => (
+          <a key={q.href} href={q.href}>
+            <span className="quick-icon"><Icon name={q.icon} /></span>
+            <span>
+              <b>{t(q.title)}</b>
+              <small>{t(q.sub)}</small>
+            </span>
+          </a>
+        ))}
+      </nav>
+
+      <div className="grid stagger">
         <GoalCard goalMinutes={settings.dailyGoalMinutes} />
 
         <article className="card">

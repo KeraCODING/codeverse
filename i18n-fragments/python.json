@@ -1,10 +1,4 @@
 {
-  "lab.intro": [
-    "Kodu yazın və dərhal işlədin. JavaScript, Python və SQL təhlükəsiz, təcrid olunmuş mühitdə işləyir.",
-    "Write code and run it right away. JavaScript, Python and SQL run in a safe, isolated environment.",
-    "Kod yazın ve hemen çalıştırın. JavaScript, Python ve SQL güvenli, yalıtılmış bir ortamda çalışır.",
-    "Пишите код и сразу запускайте. JavaScript, Python и SQL выполняются в безопасной изолированной среде."
-  ],
   "lab.rt.python": [
     "Python 3 — daxili Pyodide (WebAssembly), internetsiz işləyir; ilk işlətmədə bir neçə saniyəyə yüklənir",
     "Python 3 — built-in Pyodide (WebAssembly), works offline; loads in a few seconds on the first run",

@@ -1,0 +1,38 @@
+{
+  "lab.intro": [
+    "Kodu yazın və dərhal işlədin. JavaScript, TypeScript, Python, SQL və HTML/CSS təhlükəsiz, təcrid olunmuş mühitdə, internetsiz işləyir.",
+    "Write code and run it right away. JavaScript, TypeScript, Python, SQL and HTML/CSS run in a safe, isolated environment, offline.",
+    "Kod yazın ve hemen çalıştırın. JavaScript, TypeScript, Python, SQL ve HTML/CSS güvenli, yalıtılmış bir ortamda, internetsiz çalışır.",
+    "Пишите код и сразу запускайте. JavaScript, TypeScript, Python, SQL и HTML/CSS выполняются в безопасной изолированной среде, без интернета."
+  ],
+  "lab.rt.typescript": [
+    "TypeScript — tiplər silinir və JavaScript kimi işləyir (tip yoxlaması yoxdur)",
+    "TypeScript — types are removed and it runs as JavaScript (no type checking)",
+    "TypeScript — tipler kaldırılır ve JavaScript olarak çalışır (tip denetimi yok)",
+    "TypeScript — типы удаляются, код выполняется как JavaScript (без проверки типов)"
+  ],
+  "lab.rt.web": [
+    "HTML + CSS + JS — canlı önizləmə, təcrid olunmuş çərçivədə",
+    "HTML + CSS + JS — live preview in an isolated frame",
+    "HTML + CSS + JS — yalıtılmış çerçevede canlı önizleme",
+    "HTML + CSS + JS — живой просмотр в изолированном фрейме"
+  ],
+  "lab.tsNote": [
+    "TypeScript tipləri işlətmədən əvvəl silinir, amma yoxlanmır: tip səhvi olan kod da işləyə bilər. Tip yoxlaması üçün öz kompüterinizdə `tsc` istifadə edin.",
+    "TypeScript types are removed before running but not checked: code with type errors can still run. Use `tsc` on your computer for type checking.",
+    "TypeScript tipleri çalıştırmadan önce kaldırılır ama denetlenmez: tip hatası olan kod da çalışabilir. Tip denetimi için bilgisayarınızda `tsc` kullanın.",
+    "Типы TypeScript удаляются перед запуском, но не проверяются: код с ошибками типов всё равно может выполниться. Для проверки типов используйте `tsc` на своём компьютере."
+  ],
+  "web.files": ["Fayllar", "Files", "Dosyalar", "Файлы"],
+  "web.preview": ["Canlı önizləmə", "Live preview", "Canlı önizleme", "Живой просмотр"],
+  "web.reload": ["Yenidən yüklə", "Reload", "Yeniden yükle", "Перезагрузить"],
+  "web.live": ["Yazdıqca avtomatik yenilənir", "Updates automatically as you type", "Yazdıkça otomatik güncellenir", "Обновляется автоматически при вводе"],
+  "web.console": ["Konsol", "Console", "Konsol", "Консоль"],
+  "web.noLogs": ["`console.log` nəticələri burada görünəcək.", "`console.log` output appears here.", "`console.log` çıktısı burada görünür.", "Здесь появится вывод `console.log`."],
+  "web.safety": [
+    "Önizləmə təcrid olunmuş çərçivədə işləyir: tətbiqin məlumatlarına və yaddaşına çıxışı yoxdur. Masaüstü proqramda xarici şəkillər və şəbəkə sorğuları bloklanır.",
+    "The preview runs in an isolated frame with no access to the app's data or storage. In the desktop app, external images and network requests are blocked.",
+    "Önizleme yalıtılmış bir çerçevede çalışır: uygulamanın verilerine ve depolamasına erişimi yoktur. Masaüstü uygulamada harici resimler ve ağ istekleri engellenir.",
+    "Просмотр работает в изолированном фрейме без доступа к данным и хранилищу приложения. В настольном приложении внешние изображения и сетевые запросы блокируются."
+  ]
+}
